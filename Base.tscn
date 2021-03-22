@@ -9,13 +9,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-margin_right = 514.0
-margin_bottom = 760.0
-color = Color( 0.560784, 0.117647, 0.117647, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="MainPage" parent="." instance=ExtResource( 1 )]
+margin_left = 3.56372
+margin_top = -7.1272
+margin_right = 3.56372
+margin_bottom = -7.1272

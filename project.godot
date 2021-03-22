@@ -168,7 +168,6 @@ window/size/test_width=600
 window/size/test_height=900
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
-window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
