@@ -1,4 +1,21 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ColorRect.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Slide in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1300.71, 78.3991 ), Vector2( 1300.71, 78.3991 ) ]
+}
 
 [node name="MainPage" type="Control"]
 anchor_right = 1.0
@@ -8,5 +25,16 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 692.0
-margin_bottom = 888.0
+margin_left = 178.179
+margin_top = 21.3817
+margin_right = 870.179
+margin_bottom = 909.382
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Slide in" = SubResource( 1 )

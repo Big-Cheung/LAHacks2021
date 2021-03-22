@@ -37,38 +37,38 @@ onready var DynamicLinks : FirebaseDynamicLinks = $DynamicLinks
 # These values can be found in your Firebase Project
 # See the README on Github for how to access
 var _config : Dictionary = {
-    "apiKey": "",
-    "authDomain": "",
-    "databaseURL":"",
-    "projectId": "",
-    "storageBucket": "",
-    "messagingSenderId": "",
-    "appId": "",
-    "clientId": "",
-    "clientSecret": "",
-    "domainUriPrefix": "",
-    "cacheLocation": "user://.firebase_cache"
+	"apiKey": "AIzaSyB4Ry_lMW8RoZyuzFeF6ZtKKovcYNgwSyE",
+	"authDomain": "lahacks-71900.firebaseapp.com",
+	"databaseURL":"",
+	"projectId": "lahacks-71900",
+	"storageBucket": "lahacks-71900.appspot.com",
+	"messagingSenderId": "345832757252",
+	"appId": "1:345832757252:web:2f201893b33fa1ea2f7d51",
+	"clientId": "",
+	"clientSecret": "",
+	"domainUriPrefix": "",
+	"cacheLocation": "user://.firebase_cache"
 }
 
 func _ready() -> void:
-    _load_config()
-    for module in get_children():
-        module._set_config(_config)
-        if module is FirebaseAuth:
-            continue
-        Auth.connect("login_succeeded", module, "_on_FirebaseAuth_login_succeeded")
-        Auth.connect("signup_succeeded", module, "_on_FirebaseAuth_login_succeeded")
-        Auth.connect("token_refresh_succeeded", module, "_on_FirebaseAuth_token_refresh_succeeded")
-        Auth.connect("logged_out", module, "_on_FirebaseAuth_logout")
+	_load_config()
+	for module in get_children():
+		module._set_config(_config)
+		if module is FirebaseAuth:
+			continue
+		Auth.connect("login_succeeded", module, "_on_FirebaseAuth_login_succeeded")
+		Auth.connect("signup_succeeded", module, "_on_FirebaseAuth_login_succeeded")
+		Auth.connect("token_refresh_succeeded", module, "_on_FirebaseAuth_token_refresh_succeeded")
+		Auth.connect("logged_out", module, "_on_FirebaseAuth_logout")
 
 func _load_config() -> void:
-    if ProjectSettings.has_setting(_ENVIRONMENT_VARIABLES+"apiKey"):
-        for key in _config.keys():
-            var env_var : String = _ENVIRONMENT_VARIABLES + key
-            if ProjectSettings.has_setting(env_var) and ProjectSettings.get_setting(env_var) != "":
-                _config[key] = ProjectSettings.get_setting(env_var)
-            else:
-                if _config[key] == "":
-                    printerr("Configuration key '{key}' not found!".format({key = key}))
-    else:
-        printerr("No configuration settings found, add them in override.cfg file.")
+	if ProjectSettings.has_setting(_ENVIRONMENT_VARIABLES+"apiKey"):
+		for key in _config.keys():
+			var env_var : String = _ENVIRONMENT_VARIABLES + key
+			if ProjectSettings.has_setting(env_var) and ProjectSettings.get_setting(env_var) != "":
+				_config[key] = ProjectSettings.get_setting(env_var)
+			else:
+				if _config[key] == "":
+					printerr("Configuration key '{key}' not found!".format({key = key}))
+	else:
+		printerr("No configuration settings found, add them in override.cfg file.")
