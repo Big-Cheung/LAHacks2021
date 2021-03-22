@@ -1,16 +1,28 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://MainPage.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Style/BackButtonStyle.tres" type="StyleBox" id=1]
 
-[node name="Base" type="Control"]
+[node name="CreateChallenge" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MainPage" parent="." instance=ExtResource( 1 )]
-margin_left = 3.56372
-margin_top = -7.1272
-margin_right = 3.56372
-margin_bottom = -7.1272
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" type="Button" parent="."]
+margin_left = 1.18921
+margin_top = 1.18921
+margin_right = 101.189
+margin_bottom = 101.189
+custom_styles/normal = ExtResource( 1 )
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
