@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends Button
 
 
 # Declare member variables here. Examples:
@@ -7,8 +7,11 @@ extends VBoxContainer
 
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func _init():
+	self.connect("pressed", self, "_button_pressed")
+
+func _button_pressed():
+	get_tree().change_scene("res://ProfilePage.tscn")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
