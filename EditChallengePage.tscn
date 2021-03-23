@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Style/Fonts/DefaultFont64pt.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Style/AddEventStyle.tres" type="StyleBox" id=3]
+[ext_resource path="res://BackButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NewEventScript.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/EditChallengePage.gd" type="Script" id=6]
+[ext_resource path="res://EventMenu.gd" type="Script" id=7]
+
+[node name="EditChallengePage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Control" parent="."]
+anchor_left = 0.05
+anchor_top = 0.025
+anchor_right = 0.95
+anchor_bottom = 0.975
+margin_left = 3.56348
+margin_right = 3.56348
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BackButton" parent="Container" instance=ExtResource( 4 )]
+anchor_right = 0.175
+anchor_bottom = 0.075
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Name" type="LineEdit" parent="Container"]
+anchor_left = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.075
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Gauntlet Name Here"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="EventList" type="ItemList" parent="Container"]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 2.37842
+margin_bottom = 2.37842
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NewEvent" type="Button" parent="Container"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.525
+margin_top = 10.0
+margin_bottom = 10.0
+custom_styles/normal = ExtResource( 3 )
+custom_fonts/font = ExtResource( 2 )
+text = "New Event"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EventMenu" type="Control" parent="Container"]
+anchor_top = 0.55
+anchor_right = 1.0
+anchor_bottom = 0.9
+margin_left = -10.5946
+margin_right = -10.5946
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
