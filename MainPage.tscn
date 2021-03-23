@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends ColorRect
 
 
@@ -19,20 +19,10 @@ func _ready():
 #	pass
 "
 
-[sub_resource type="Animation" id=1]
-resource_name = "Slide in"
-tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:rect_position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.1, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1300.71, 78.3991 ), Vector2( 1300.71, 78.3991 ) ]
-}
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.160784, 0.717647, 0.827451, 1 )
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
 
 [node name="MainPage" type="Control"]
 anchor_right = 1.0
@@ -41,17 +31,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 178.179
-margin_top = 21.3817
-margin_right = 870.179
-margin_bottom = 909.382
-script = SubResource( 2 )
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 1080.0
+margin_bottom = 1920.0
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Tween" type="Tween" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/Slide in" = SubResource( 1 )
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1080.0
+margin_bottom = 180.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
