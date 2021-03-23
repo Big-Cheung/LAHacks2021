@@ -1,28 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene format=2]
 
-[ext_resource path="res://Style/BackButtonStyle.tres" type="StyleBox" id=1]
-
-[node name="CreateChallenge" type="Control"]
+[node name="Base" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BackButton" type="Button" parent="."]
-margin_left = 1.18921
-margin_top = 1.18921
-margin_right = 101.189
-margin_bottom = 101.189
-custom_styles/normal = ExtResource( 1 )
-text = "<"
 __meta__ = {
 "_edit_use_anchors_": false
 }
