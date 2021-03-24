@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Style/Fonts/DefaultFont128pt.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Style/Fonts/DefaultFont64pt.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Icons/google-icon.png" type="Texture" id=3]
+[ext_resource path="res://Icons/facebook-icon.png" type="Texture" id=4]
+[ext_resource path="res://Style/HomeMenu/HomeMenuHover.tres" type="StyleBox" id=5]
+[ext_resource path="res://Style/HomeMenu/HomeMenuDefault.tres" type="StyleBox" id=6]
+[ext_resource path="res://Style/Fonts/DefaultFont32pt.tres" type="DynamicFont" id=7]
+
+[node name="TitlePage" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="."]
+margin_right = 900.0
+margin_bottom = 1800.0
+color = Color( 0.364706, 0.364706, 0.364706, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 145.0
+margin_top = 131.0
+margin_right = 775.0
+margin_bottom = 277.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "App Name"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sign-in" type="Container" parent="."]
+margin_left = 68.0
+margin_top = 424.0
+margin_right = 848.0
+margin_bottom = 906.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="facebook-icon" type="Sprite" parent="Sign-in"]
+position = Vector2( 50, 175 )
+scale = Vector2( 0.21875, 0.21875 )
+texture = ExtResource( 4 )
+
+[node name="google-icon" type="Sprite" parent="Sign-in"]
+position = Vector2( 55, 350 )
+scale = Vector2( 0.286719, 0.286719 )
+texture = ExtResource( 3 )
+
+[node name="sign-in-text" type="RichTextLabel" parent="Sign-in"]
+margin_right = 200.0
+margin_bottom = 80.0
+custom_fonts/normal_font = ExtResource( 2 )
+text = "Sign-in"
+
+[node name="facebook-login" type="LineEdit" parent="Sign-in"]
+margin_left = 130.0
+margin_top = 135.0
+margin_right = 680.0
+margin_bottom = 225.0
+custom_styles/read_only = ExtResource( 6 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
+
+[node name="google-login" type="LineEdit" parent="Sign-in"]
+margin_left = 130.0
+margin_top = 305.0
+margin_right = 680.0
+margin_bottom = 395.0
+custom_styles/read_only = ExtResource( 6 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
