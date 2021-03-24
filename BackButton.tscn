@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/BackButtonScript.gd" type="Script" id=1]
 [ext_resource path="res://Style/BackButtonStyle.tres" type="StyleBox" id=2]
+[ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=3]
 
 [node name="BackButton" type="Button"]
 margin_left = 50.0
 margin_top = 50.0
 margin_right = 200.0
 margin_bottom = 200.0
+theme = ExtResource( 3 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/pressed = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
 custom_styles/normal = ExtResource( 2 )
 text = "Back"
 script = ExtResource( 1 )

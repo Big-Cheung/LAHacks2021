@@ -4,14 +4,15 @@
 [ext_resource path="res://Style/Fonts/DefaultFont64pt.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Style/AddEventStyle.tres" type="StyleBox" id=3]
 [ext_resource path="res://BackButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://NewEventScript.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/EditChallengePage.gd" type="Script" id=6]
-[ext_resource path="res://EventMenu.gd" type="Script" id=7]
+[ext_resource path="res://Style/DeleteEventStyle.tres" type="StyleBox" id=5]
+[ext_resource path="res://Style/Fonts/DefaultFont32pt.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Scripts/EditChallengePage.gd" type="Script" id=7]
 
 [node name="EditChallengePage" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 6 )
+theme = ExtResource( 1 )
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -21,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -31,6 +33,7 @@ anchor_right = 0.95
 anchor_bottom = 0.975
 margin_left = 3.56348
 margin_right = 3.56348
+theme = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -63,6 +66,7 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 margin_top = 2.37842
 margin_bottom = 2.37842
+theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true,
@@ -75,10 +79,14 @@ anchor_right = 1.0
 anchor_bottom = 0.525
 margin_top = 10.0
 margin_bottom = 10.0
+theme = ExtResource( 1 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
 custom_styles/normal = ExtResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 text = "New Event"
-script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -87,9 +95,32 @@ __meta__ = {
 anchor_top = 0.55
 anchor_right = 1.0
 anchor_bottom = 0.9
-margin_left = -10.5946
-margin_right = -10.5946
-script = ExtResource( 7 )
+margin_top = -0.471924
+margin_bottom = -0.471924
+theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DeleteEvent" type="Button" parent="Container/EventMenu"]
+anchor_top = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.9
+theme = ExtResource( 1 )
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 2 )
+text = "Delete Event"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineEdit" type="LineEdit" parent="Container/EventMenu"]
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.2
+custom_fonts/font = ExtResource( 6 )
+placeholder_text = "Empty Event"
