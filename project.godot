@@ -159,6 +159,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
+Globals="*res://Globals.gd"
 
 [display]
 
