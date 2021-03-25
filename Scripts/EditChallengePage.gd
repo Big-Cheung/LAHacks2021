@@ -75,6 +75,7 @@ func pointsValueChanged(newVal):
 func roundsValueChanged(newVal):
 	Globals.eventData[selected]["rounds"] = newVal
 	$"Container/EventMenu/Rounds/Num".value = newVal
+	print(JSON.print(Globals.eventData));
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

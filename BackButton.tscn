@@ -1,21 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/BackButtonScript.gd" type="Script" id=1]
-[ext_resource path="res://Style/BackButtonStyle.tres" type="StyleBox" id=2]
+[ext_resource path="res://Icons/BackArrow.png" type="Texture" id=2]
 [ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=3]
 
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
 [node name="BackButton" type="Button"]
-margin_left = 50.0
-margin_top = 50.0
-margin_right = 200.0
-margin_bottom = 200.0
+anchor_right = 0.569
+anchor_bottom = 0.284
+margin_right = -0.0999756
+margin_bottom = 0.799988
 theme = ExtResource( 3 )
-custom_styles/hover = ExtResource( 2 )
-custom_styles/pressed = ExtResource( 2 )
-custom_styles/focus = ExtResource( 2 )
-custom_styles/disabled = ExtResource( 2 )
-custom_styles/normal = ExtResource( 2 )
-text = "Back"
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+icon = ExtResource( 2 )
+flat = true
+expand_icon = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

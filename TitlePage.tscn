@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Style/Fonts/DefaultFont128pt.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Style/Fonts/DefaultFont64pt.tres" type="DynamicFont" id=2]
@@ -7,10 +7,19 @@
 [ext_resource path="res://Style/HomeMenu/HomeMenuHover.tres" type="StyleBox" id=5]
 [ext_resource path="res://Style/HomeMenu/HomeMenuDefault.tres" type="StyleBox" id=6]
 [ext_resource path="res://Style/Fonts/DefaultFont32pt.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=8]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.227451, 0.768627, 0.94902, 1, 0.654902, 0.654902, 0.658824, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 900
 
 [node name="TitlePage" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -18,63 +27,89 @@ __meta__ = {
 [node name="Background" type="ColorRect" parent="."]
 margin_right = 900.0
 margin_bottom = 1800.0
-color = Color( 0.364706, 0.364706, 0.364706, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 145.0
-margin_top = 131.0
-margin_right = 775.0
-margin_bottom = 277.0
-custom_fonts/normal_font = ExtResource( 1 )
-text = "App Name"
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 2.0
+anchor_bottom = 0.5
+margin_left = 900.0
+margin_right = 900.0
+rect_rotation = 90.0
+texture = SubResource( 2 )
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sign-in" type="Container" parent="."]
-margin_left = 68.0
-margin_top = 424.0
-margin_right = 848.0
-margin_bottom = 906.0
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.05
+anchor_top = 0.025
+anchor_right = 0.95
+anchor_bottom = 0.975
+margin_left = -2.66968
+margin_top = -2.66968
+margin_right = -2.66968
+margin_bottom = -2.66968
+theme = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="facebook-icon" type="Sprite" parent="Sign-in"]
-position = Vector2( 50, 175 )
+[node name="Label" type="Label" parent="Panel"]
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.15
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Gauntlet"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="Control" parent="Panel"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="facebook-icon" type="Sprite" parent="Panel/Control"]
+position = Vector2( 75.6697, 556.67 )
 scale = Vector2( 0.21875, 0.21875 )
 texture = ExtResource( 4 )
 
-[node name="google-icon" type="Sprite" parent="Sign-in"]
-position = Vector2( 55, 350 )
+[node name="google-icon" type="Sprite" parent="Panel/Control"]
+position = Vector2( 80.6697, 731.67 )
 scale = Vector2( 0.286719, 0.286719 )
 texture = ExtResource( 3 )
 
-[node name="sign-in-text" type="RichTextLabel" parent="Sign-in"]
-margin_right = 200.0
-margin_bottom = 80.0
+[node name="google-login" type="LineEdit" parent="Panel/Control"]
+margin_left = 155.67
+margin_top = 686.67
+margin_right = 705.67
+margin_bottom = 776.67
+custom_styles/read_only = ExtResource( 6 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
+
+[node name="facebook-login" type="LineEdit" parent="Panel/Control"]
+margin_left = 155.67
+margin_top = 516.67
+margin_right = 705.67
+margin_bottom = 606.67
+custom_styles/read_only = ExtResource( 6 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = ExtResource( 7 )
+
+[node name="sign-in-text" type="RichTextLabel" parent="Panel/Control"]
+margin_left = 25.6697
+margin_top = 381.67
+margin_right = 225.67
+margin_bottom = 461.67
 custom_fonts/normal_font = ExtResource( 2 )
 text = "Sign-in"
-
-[node name="facebook-login" type="LineEdit" parent="Sign-in"]
-margin_left = 130.0
-margin_top = 135.0
-margin_right = 680.0
-margin_bottom = 225.0
-custom_styles/read_only = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 6 )
-custom_fonts/font = ExtResource( 7 )
-
-[node name="google-login" type="LineEdit" parent="Sign-in"]
-margin_left = 130.0
-margin_top = 305.0
-margin_right = 680.0
-margin_bottom = 395.0
-custom_styles/read_only = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 6 )
-custom_fonts/font = ExtResource( 7 )

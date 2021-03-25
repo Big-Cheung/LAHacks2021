@@ -6,14 +6,11 @@ extends Button
 
 
 # Called when the node enters the scene tree for the first time.
-func _init():
-	self.connect("pressed", self, "_button_pressed")
+func _ready():
+	self.connect("pressed", self, "button_pressed")
 
-func _button_pressed():
-	self.get_parent().visible = false
-	get_node("../MainPage").visible = true
-	get_node("../MainPage").get_tree().paused = false
-	get_tree().paused = true
+func button_pressed():
+	get_tree().change_scene(Globals.last_page);
 
 
 
