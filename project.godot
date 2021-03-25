@@ -123,6 +123,12 @@ _global_script_classes=[ {
 "class": "StorageTask",
 "language": "GDScript",
 "path": "res://addons/godot-firebase/storage/storage_task.gd"
+}, {
+"base": "Node",
+"class": "Firebase",
+"is_autoload": true,
+"language": "GDScript",
+"path": "res://addons/godot-firebase/firebase/firebase.gd"
 } ]
 _global_script_class_icons={
 "ArgumentDocItem": "",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=1]
 [ext_resource path="res://BackButton.tscn" type="PackedScene" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Icons/Trophy.png" type="Texture" id=5]
 [ext_resource path="res://Style/Fonts/DefaultFont32pt.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Style/RoundedCornersWhite.tres" type="StyleBox" id=7]
+
+[sub_resource type="StyleBoxLine" id=1]
+color = Color( 1, 1, 1, 1 )
+thickness = 2
+vertical = true
 
 [node name="GauntletPage" type="Control"]
 anchor_right = 1.0
@@ -20,6 +25,8 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -2.20224
+margin_bottom = -2.20227
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -62,18 +69,70 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Leaderboard" type="Control" parent="Panel/Container"]
-anchor_top = 0.125
+[node name="LeaderboardLabel" type="Label" parent="Panel/Container"]
+anchor_top = 0.113
 anchor_right = 1.0
-anchor_bottom = 0.275
+anchor_bottom = 0.15
+custom_fonts/font = ExtResource( 6 )
+text = "Leaderboard"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Top" type="TextureRect" parent="Panel/Container/Leaderboard"]
-anchor_left = 0.1
-anchor_right = 0.2
+[node name="Leaderboard" type="Control" parent="Panel/Container"]
+anchor_top = 0.15
+anchor_right = 1.0
+anchor_bottom = 0.325
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="First" type="Control" parent="Panel/Container/Leaderboard"]
+anchor_right = 1.0
 anchor_bottom = 0.3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Panel/Container/Leaderboard/First"]
+anchor_left = 0.2
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+margin_left = 1.18921
+margin_top = -1.18921
+margin_right = 1.18921
+margin_bottom = -1.18921
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "Evan Cheung"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Panel/Container/Leaderboard/First"]
+anchor_left = 0.775
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+margin_top = -1.33484
+margin_bottom = -1.33484
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "9999999"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Icon" type="TextureRect" parent="Panel/Container/Leaderboard/First"]
+anchor_left = 0.1
+anchor_right = 0.175
+anchor_bottom = 1.0
 margin_bottom = 0.0499954
 texture = ExtResource( 5 )
 expand = true
@@ -81,11 +140,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="First" type="Label" parent="Panel/Container/Leaderboard"]
-anchor_left = 0.25
-anchor_top = 0.05
-anchor_right = 0.9
-anchor_bottom = 0.25
+[node name="Second" type="Control" parent="Panel/Container/Leaderboard"]
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 5.0
+margin_bottom = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Panel/Container/Leaderboard/Second"]
+anchor_left = 0.2
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = ExtResource( 6 )
 text = "Evan Cheung"
@@ -95,16 +164,226 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Second" type="Label" parent="Panel/Container/Leaderboard"]
-anchor_left = 0.25
-anchor_top = 0.05
-anchor_right = 0.9
-anchor_bottom = 0.25
+[node name="Score" type="Label" parent="Panel/Container/Leaderboard/Second"]
+anchor_left = 0.775
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+margin_top = -1.33484
+margin_bottom = -1.33484
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "9999999"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Container/Leaderboard/Second"]
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.175
+anchor_bottom = 0.75
+margin_left = -0.206299
+margin_right = 0.793701
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "2"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Third" type="Control" parent="Panel/Container/Leaderboard"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.7
+margin_top = 5.0
+margin_bottom = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Panel/Container/Leaderboard/Third"]
+anchor_left = 0.2
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
 custom_styles/normal = ExtResource( 7 )
 custom_fonts/font = ExtResource( 6 )
 text = "Evan Cheung"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Panel/Container/Leaderboard/Third"]
+anchor_left = 0.775
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+margin_top = -1.33484
+margin_bottom = -1.33484
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "9999999"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Container/Leaderboard/Third"]
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.175
+anchor_bottom = 0.75
+margin_left = -0.206299
+margin_right = 0.793701
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "3"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fourth" type="Control" parent="Panel/Container/Leaderboard"]
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.9
+margin_top = 5.0
+margin_bottom = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Panel/Container/Leaderboard/Fourth"]
+anchor_left = 0.2
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "Evan Cheung"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Panel/Container/Leaderboard/Fourth"]
+anchor_left = 0.775
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+margin_top = -1.33484
+margin_bottom = -1.33484
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "9999999"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Container/Leaderboard/Fourth"]
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.175
+anchor_bottom = 0.75
+margin_left = -0.206299
+margin_right = 0.793701
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="User" type="Control" parent="Panel/Container/Leaderboard"]
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 1.1
+margin_top = 5.0
+margin_bottom = 5.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Panel/Container/Leaderboard/User"]
+anchor_left = 0.2
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "Evan Cheung"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="Panel/Container/Leaderboard/User"]
+anchor_left = 0.775
+anchor_top = 0.25
+anchor_right = 0.95
+anchor_bottom = 0.75
+margin_top = -1.33484
+margin_bottom = -1.33484
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "9999999"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Container/Leaderboard/User"]
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.175
+anchor_bottom = 0.75
+margin_left = -0.206299
+margin_right = 0.793701
+custom_styles/normal = ExtResource( 7 )
+custom_fonts/font = ExtResource( 6 )
+text = "999"
+align = 1
+valign = 1
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VSeparator" type="VSeparator" parent="Panel/Container/Leaderboard"]
+anchor_top = 0.9
+anchor_right = 1.0
+anchor_bottom = 0.95
+custom_styles/separator = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/Container"]
+anchor_top = 0.35
+anchor_right = 1.0
+anchor_bottom = 0.35
+margin_bottom = 4.0
+theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
