@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/door.png-8b7c4bfe20b827a57015a826e14cd0ab.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Icons/door.png"
+dest_files=[ "res://.import/door.png-8b7c4bfe20b827a57015a826e14cd0ab.stex" ]
+
 [params]
 
 compress/mode=0

@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/thanos.png-29ce5dd57ac706f3ca2a81e355784b36.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Icons/thanos.png"
+dest_files=[ "res://.import/thanos.png-29ce5dd57ac706f3ca2a81e355784b36.stex" ]
+
 [params]
 
 compress/mode=0

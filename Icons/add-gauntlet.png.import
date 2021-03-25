@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/add-gauntlet.png-737998764501882d88f46b54243c3b34.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Icons/add-gauntlet.png"
+dest_files=[ "res://.import/add-gauntlet.png-737998764501882d88f46b54243c3b34.stex" ]
+
 [params]
 
 compress/mode=0

@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/infinity-gauntlet.png-1fba8f201f3ed2bf62587fabfc2fc4b7.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Icons/infinity-gauntlet.png"
+dest_files=[ "res://.import/infinity-gauntlet.png-1fba8f201f3ed2bf62587fabfc2fc4b7.stex" ]
+
 [params]
 
 compress/mode=0

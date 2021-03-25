@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/check-mark.png-123508ec0dd9a4db028a275636e01316.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Icons/check-mark.png"
+dest_files=[ "res://.import/check-mark.png-123508ec0dd9a4db028a275636e01316.stex" ]
+
 [params]
 
 compress/mode=0

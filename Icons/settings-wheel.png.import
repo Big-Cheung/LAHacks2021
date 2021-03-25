@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/settings-wheel.png-f61554154a395373c5971436b7a1c341.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Icons/settings-wheel.png"
+dest_files=[ "res://.import/settings-wheel.png-f61554154a395373c5971436b7a1c341.stex" ]
+
 [params]
 
 compress/mode=0

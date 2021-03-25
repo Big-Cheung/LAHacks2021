@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/back-button.png-96e9edc5dd3557a84d23a36b1fc33070.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://Icons/back-button.png"
+dest_files=[ "res://.import/back-button.png-96e9edc5dd3557a84d23a36b1fc33070.stex" ]
+
 [params]
 
 compress/mode=0
