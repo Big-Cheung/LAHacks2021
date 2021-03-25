@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Trophy.png-8e542e0ec651f17128fb2ce5d0aefabe.stex"
+path="res://.import/add-gauntlet.png-737998764501882d88f46b54243c3b34.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icons/Trophy.png"
-dest_files=[ "res://.import/Trophy.png-8e542e0ec651f17128fb2ce5d0aefabe.stex" ]
+source_file="res://Icons/add-gauntlet.png"
+dest_files=[ "res://.import/add-gauntlet.png-737998764501882d88f46b54243c3b34.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
