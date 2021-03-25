@@ -1,11 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Style/Fonts/DefaultFont128pt.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Style/Fonts/DefaultFont64pt.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Style/Fonts/DefaultFont16pt.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Icons/google-icon.png" type="Texture" id=3]
 [ext_resource path="res://Icons/facebook-icon.png" type="Texture" id=4]
-[ext_resource path="res://Style/HomeMenu/HomeMenuHover.tres" type="StyleBox" id=5]
-[ext_resource path="res://Style/HomeMenu/HomeMenuDefault.tres" type="StyleBox" id=6]
 [ext_resource path="res://Style/Fonts/DefaultFont32pt.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=8]
 
@@ -16,6 +13,30 @@ colors = PoolColorArray( 0.227451, 0.768627, 0.94902, 1, 0.654902, 0.654902, 0.6
 gradient = SubResource( 1 )
 width = 900
 
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 90
+corner_radius_top_right = 90
+corner_radius_bottom_right = 90
+corner_radius_bottom_left = 90
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 1, 1, 1, 0.235294 )
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [node name="TitlePage" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,14 +45,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="ColorRect" parent="."]
-margin_right = 900.0
-margin_bottom = 1800.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 2.0
 anchor_bottom = 0.5
 margin_left = 900.0
@@ -43,73 +57,195 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Panel" type="Panel" parent="."]
-anchor_left = 0.05
-anchor_top = 0.025
-anchor_right = 0.95
-anchor_bottom = 0.975
-margin_left = -2.66968
-margin_top = -2.66968
-margin_right = -2.66968
-margin_bottom = -2.66968
-theme = ExtResource( 8 )
+[node name="ProfileIcon" type="Container" parent="."]
+anchor_left = 0.4
+anchor_top = 0.1
+anchor_right = 0.6
+anchor_bottom = 0.2
+margin_top = -0.400009
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel"]
-anchor_top = 0.05
-anchor_right = 1.0
-anchor_bottom = 0.15
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Gauntlet"
-align = 1
-valign = 1
+[node name="ProfileCircle" type="Panel" parent="ProfileIcon"]
+margin_right = 180.0
+margin_bottom = 180.0
+rect_clip_content = true
+custom_styles/panel = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control" type="Control" parent="Panel"]
-margin_right = 40.0
+[node name="ProfileHead" type="Panel" parent="ProfileIcon/ProfileCircle"]
+margin_left = 40.0
+margin_top = 30.0
+margin_right = 140.0
+margin_bottom = 130.0
+rect_pivot_offset = Vector2( 50, 80.8382 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Crop ProfileBody" type="Control" parent="ProfileIcon/ProfileCircle"]
+anchor_left = 0.494
+anchor_top = 0.5
+anchor_right = 0.494
+anchor_bottom = 0.5
+margin_left = -94.92
+margin_top = -90.0
+margin_right = 93.08
+margin_bottom = 69.0
+rect_clip_content = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileBody" type="Panel" parent="ProfileIcon/ProfileCircle/Crop ProfileBody"]
+margin_left = 36.0
+margin_top = 124.828
+margin_right = 156.0
+margin_bottom = 244.828
+rect_pivot_offset = Vector2( 50, 80.8382 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text Fields" type="Container" parent="."]
+anchor_left = 0.2
+anchor_top = 0.288
+anchor_right = 0.8
+anchor_bottom = 0.8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLine" type="HSeparator" parent="Text Fields"]
+margin_top = 40.0
+margin_right = 540.0
+margin_bottom = 44.0
+
+[node name="First Name" type="RichTextLabel" parent="Text Fields"]
+margin_right = 175.0
 margin_bottom = 40.0
+custom_fonts/normal_font = ExtResource( 7 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "First name-"
 
-[node name="facebook-icon" type="Sprite" parent="Panel/Control"]
-position = Vector2( 75.6697, 556.67 )
-scale = Vector2( 0.21875, 0.21875 )
+[node name="NameField" type="LineEdit" parent="Text Fields"]
+margin_left = 180.0
+margin_right = 540.0
+margin_bottom = 40.0
+custom_styles/read_only = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 7 )
+
+[node name="NameLine2" type="HSeparator" parent="Text Fields"]
+margin_top = 130.0
+margin_right = 540.0
+margin_bottom = 134.0
+
+[node name="Last Name" type="RichTextLabel" parent="Text Fields"]
+margin_top = 90.0
+margin_right = 175.0
+margin_bottom = 130.0
+custom_fonts/normal_font = ExtResource( 7 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Last name-"
+
+[node name="NameField2" type="LineEdit" parent="Text Fields"]
+margin_left = 180.0
+margin_top = 90.0
+margin_right = 540.0
+margin_bottom = 130.0
+custom_styles/read_only = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 7 )
+
+[node name="EmailLine" type="HSeparator" parent="Text Fields"]
+margin_top = 220.0
+margin_right = 540.0
+margin_bottom = 224.0
+
+[node name="Email Address" type="RichTextLabel" parent="Text Fields"]
+margin_top = 180.0
+margin_right = 230.0
+margin_bottom = 220.0
+custom_fonts/normal_font = ExtResource( 7 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Email Address-"
+
+[node name="EmailField" type="LineEdit" parent="Text Fields"]
+margin_left = 230.0
+margin_top = 180.0
+margin_right = 540.0
+margin_bottom = 220.0
+custom_styles/read_only = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 7 )
+
+[node name="PasswordLine" type="HSeparator" parent="Text Fields"]
+margin_top = 310.0
+margin_right = 540.0
+margin_bottom = 314.0
+
+[node name="Password" type="RichTextLabel" parent="Text Fields"]
+margin_top = 270.0
+margin_right = 170.0
+margin_bottom = 310.0
+custom_fonts/normal_font = ExtResource( 7 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+text = "Password-"
+
+[node name="NameField3" type="LineEdit" parent="Text Fields"]
+margin_left = 170.0
+margin_top = 270.0
+margin_right = 540.0
+margin_bottom = 310.0
+custom_styles/read_only = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Signup Button" type="Button" parent="Text Fields"]
+margin_left = 132.5
+margin_top = 400.0
+margin_right = 407.5
+margin_bottom = 475.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_pressed = Color( 0.403922, 0.403922, 0.403922, 1 )
+text = "Sign-up"
+
+[node name="Or Sign up With" type="RichTextLabel" parent="Text Fields"]
+margin_left = 225.0
+margin_top = 510.0
+margin_right = 335.0
+margin_bottom = 530.0
+custom_fonts/mono_font = ExtResource( 1 )
+custom_fonts/bold_italics_font = ExtResource( 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+text = "Sign-up With"
+
+[node name="facebook-icon" type="Sprite" parent="."]
+position = Vector2( 497.956, 1082.57 )
+scale = Vector2( 0.0876156, 0.0876156 )
 texture = ExtResource( 4 )
 
-[node name="google-icon" type="Sprite" parent="Panel/Control"]
-position = Vector2( 80.6697, 731.67 )
-scale = Vector2( 0.286719, 0.286719 )
+[node name="google-icon" type="Sprite" parent="."]
+position = Vector2( 404.054, 1084.37 )
+scale = Vector2( 0.113953, 0.113953 )
 texture = ExtResource( 3 )
-
-[node name="google-login" type="LineEdit" parent="Panel/Control"]
-margin_left = 155.67
-margin_top = 686.67
-margin_right = 705.67
-margin_bottom = 776.67
-custom_styles/read_only = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 6 )
-custom_fonts/font = ExtResource( 7 )
-
-[node name="facebook-login" type="LineEdit" parent="Panel/Control"]
-margin_left = 155.67
-margin_top = 516.67
-margin_right = 705.67
-margin_bottom = 606.67
-custom_styles/read_only = ExtResource( 6 )
-custom_styles/focus = ExtResource( 5 )
-custom_styles/normal = ExtResource( 6 )
-custom_fonts/font = ExtResource( 7 )
-
-[node name="sign-in-text" type="RichTextLabel" parent="Panel/Control"]
-margin_left = 25.6697
-margin_top = 381.67
-margin_right = 225.67
-margin_bottom = 461.67
-custom_fonts/normal_font = ExtResource( 2 )
-text = "Sign-in"
