@@ -1,6 +1,6 @@
 extends Node
 
-var lastPage = "res://MainPage.tcsn"
+var lastPage = "res://Base.tcsn"
 
 var userID = 0
 var currentGauntlet = 0

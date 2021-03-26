@@ -14,8 +14,12 @@ func _ready():
 	$"Container/EventList".connect("nothing_selected", self, "hideMenu")
 	$"Container/Save".connect("pressed",self,"saveGauntlet")
 	
+	
+	#Connect Gauntlet fields to their respective functions
+	$"Container/Name".connect("text_changed",self,"changeGauntletName")
+	
 	#Connect Fields in the Edit Event section to their respective functions
-	$"Container/EventMenu/EventName".connect("text_entered",self,"changeText")
+	$"Container/EventMenu/EventName".connect("text_changed",self,"changeText")
 	$"Container/EventMenu/Start/Num".connect("value_changed",self,"startValueChanged")
 	$"Container/EventMenu/Growth/Num".connect("value_changed",self,"growthValueChanged")
 	$"Container/EventMenu/Points/Num".connect("value_changed",self,"pointsValueChanged")
@@ -65,6 +69,9 @@ func hideMenu():
 	$"Container/DeleteEvent".visible = false
 	$"Container/EventMenu".visible = false
 
+func changeGauntletName(text):
+	Globals.gauntletData.name = text
+	print(Globals.gauntletData.name)
 
 func changeText(text):
 	$"Container/EventList".set_item_text(selected,text)
@@ -88,26 +95,46 @@ func roundsValueChanged(newVal):
 	$"Container/EventMenu/Rounds/Num".value = newVal
 	
 func saveGauntlet():
+	print("You clicked!")
+	
+	#Read the data
 	var save_data = File.new()
-	var exists = save_data.file_exists("user://tempdata.json")
-	save_data.open("user://tempdata.json", File.READ_WRITE)
+	var exists = save_data.file_exists("user://Gauntlets.json")
+	save_data.open("user://Gauntlets.json", File.READ)
 	var Gauntlets = {}
 	if (exists):
 		Gauntlets = parse_json(save_data.get_as_text())
+	save_data.close()
+	
+	#Write the data
+	save_data.open("user://Gauntlets.json", File.WRITE)
 	Gauntlets[String(Globals.currentGauntlet)] = Globals.gauntletData
 	save_data.store_string(to_json(Gauntlets))
 	save_data.close()
+	
+	#Change back to the previous scene
+	get_tree().change_scene("res://Base.tscn")
 
 func loadGauntlet():
 	var load_data = File.new()
-	if not (load_data.file_exists("user://tempdata.json")):
+	if not (load_data.file_exists("user://Gauntlets.json")):
 		return
 		
-	load_data.open("user://tempdata.json", File.READ)
+	load_data.open("user://Gauntlets.json", File.READ)
 	var Gauntlets = parse_json(load_data.get_as_text())
 	if (Gauntlets.has(String(Globals.currentGauntlet))):
 		Globals.gauntletData = Gauntlets[String(Globals.currentGauntlet)]
 	load_data.close()
+	
+	$Container/EventList.clear()
+	for item in Globals.gauntletData.eventData:
+		$Container/EventList.add_item(item.name)
+	
+	$Container/Name.text = Globals.gauntletData.name
+	
+	checkForEmpty()
+
+	
 
 func checkForEmpty():
 	if ($Container/EventList.get_item_count() < 1):
