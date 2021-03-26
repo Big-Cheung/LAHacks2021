@@ -1,16 +1,20 @@
 extends Node
 
 var lastPage = "res://MainPage.tcsn"
+
+var userID = 0
 var currentGauntlet = 0
-var eventData = []
+
 var gauntletData = {
+	"id":0,
 	"name":"default",
-	"players":[],
+	"owner":0,
+	"playerData":[],
 	"eventData":[]
 }
 
 
-var userID
+
 
 func _ready():
 	pass

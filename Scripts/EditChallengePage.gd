@@ -4,11 +4,15 @@ var selected = -1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
+	#Load data
+	loadGauntlet()
+	
 	#Connect Buttons to their respective functions
 	$"Container/NewEvent".connect("pressed", self, "createEvent")
-	$"Container/EventMenu/DeleteEvent".connect("pressed", self, "deleteEvent")
+	$"Container/DeleteEvent".connect("pressed", self, "deleteEvent")
 	$"Container/EventList".connect("item_selected", self, "showMenu")
 	$"Container/EventList".connect("nothing_selected", self, "hideMenu")
+	$"Container/Save".connect("pressed",self,"saveGauntlet")
 	
 	#Connect Fields in the Edit Event section to their respective functions
 	$"Container/EventMenu/EventName".connect("text_entered",self,"changeText")
@@ -28,55 +32,88 @@ func _ready():
 	$"Container/EventMenu/Growth/Num".share($"Container/EventMenu/Growth/Slider")
 	$"Container/EventMenu/Points/Num".share($"Container/EventMenu/Points/Slider")
 	$"Container/EventMenu/Rounds/Num".share($"Container/EventMenu/Rounds/Slider")
+	
+	checkForEmpty()
 
 func createEvent():
 	$"Container/EventList".add_item("Blank Event")
 	$"Container/EventList".select($"Container/EventList".get_item_count() - 1)
-	Globals.eventData.push_back({"start":5,"growth":5,"points":10,"rounds":5})
+	Globals.gauntletData.eventData.push_back({"name":"Blank Event","start":5,"growth":5,"points":10,"rounds":5,"round":1})
 	$"Container/EventList".emit_signal("item_selected", $"Container/EventList".get_item_count() - 1)
+	checkForEmpty()
 	
 func deleteEvent():
-	Globals.eventData.remove($"Container/EventList".get_selected_items()[0])
+	Globals.gauntletData.eventData.remove($"Container/EventList".get_selected_items()[0])
 	$"Container/EventList".remove_item($"Container/EventList".get_selected_items()[0])
 	$"Container/EventList".unselect_all()
 	$"Container/EventList".emit_signal("nothing_selected")
+	checkForEmpty()
 
 func showMenu(index):
 	selected = index
 	$"Container/EventMenu/EventName".text = $"Container/EventList".get_item_text(index)
-	$"Container/EventMenu/Start/Num".value = Globals.eventData[index]["start"]
-	$"Container/EventMenu/Growth/Num".value = Globals.eventData[index]["growth"]
-	$"Container/EventMenu/Points/Num".value = Globals.eventData[index]["points"]
-	$"Container/EventMenu/Rounds/Num".value = Globals.eventData[index]["rounds"]
+	$"Container/EventMenu/Start/Num".value = Globals.gauntletData.eventData[index]["start"]
+	$"Container/EventMenu/Growth/Num".value = Globals.gauntletData.eventData[index]["growth"]
+	$"Container/EventMenu/Points/Num".value = Globals.gauntletData.eventData[index]["points"]
+	$"Container/EventMenu/Rounds/Num".value = Globals.gauntletData.eventData[index]["rounds"]
 	$"Container/EventMenu".visible = true
+	$"Container/DeleteEvent".visible = true
 
 func hideMenu():
 	selected = -1
 	$"Container/EventList".unselect_all()
+	$"Container/DeleteEvent".visible = false
 	$"Container/EventMenu".visible = false
 
 
 func changeText(text):
 	$"Container/EventList".set_item_text(selected,text)
+	Globals.gauntletData.eventData[selected]["name"] = text
 	$"Container/EventMenu/EventName".text = text
 
 func startValueChanged(newVal):
-	Globals.eventData[selected]["start"] = newVal
+	Globals.gauntletData.eventData[selected]["start"] = newVal
 	$"Container/EventMenu/Start/Num".value = newVal
 
 func growthValueChanged(newVal):
-	Globals.eventData[selected]["growth"] = newVal
+	Globals.gauntletData.eventData[selected]["growth"] = newVal
 	$"Container/EventMenu/Growth/Num".value = newVal
 	
 func pointsValueChanged(newVal):
-	Globals.eventData[selected]["points"] = newVal
+	Globals.gauntletData.eventData[selected]["points"] = newVal
 	$"Container/EventMenu/Points/Num".value = newVal
 	
 func roundsValueChanged(newVal):
-	Globals.eventData[selected]["rounds"] = newVal
+	Globals.gauntletData.eventData[selected]["rounds"] = newVal
 	$"Container/EventMenu/Rounds/Num".value = newVal
-	print(JSON.print(Globals.eventData));
+	
+func saveGauntlet():
+	var save_data = File.new()
+	var exists = save_data.file_exists("user://tempdata.json")
+	save_data.open("user://tempdata.json", File.READ_WRITE)
+	var Gauntlets = {}
+	if (exists):
+		Gauntlets = parse_json(save_data.get_as_text())
+	Gauntlets[String(Globals.currentGauntlet)] = Globals.gauntletData
+	save_data.store_string(to_json(Gauntlets))
+	save_data.close()
 
+func loadGauntlet():
+	var load_data = File.new()
+	if not (load_data.file_exists("user://tempdata.json")):
+		return
+		
+	load_data.open("user://tempdata.json", File.READ)
+	var Gauntlets = parse_json(load_data.get_as_text())
+	if (Gauntlets.has(String(Globals.currentGauntlet))):
+		Globals.gauntletData = Gauntlets[String(Globals.currentGauntlet)]
+	load_data.close()
+
+func checkForEmpty():
+	if ($Container/EventList.get_item_count() < 1):
+		$Container/Save.disabled = true
+	else:
+		$Container/Save.disabled = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

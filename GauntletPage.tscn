@@ -25,14 +25,12 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -2.20224
-margin_bottom = -2.20227
 theme = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Container" type="Control" parent="Panel"]
+[node name="Container" type="Control" parent="."]
 anchor_left = 0.05
 anchor_top = 0.025
 anchor_right = 0.95
@@ -41,16 +39,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="BackButton" parent="Panel/Container" instance=ExtResource( 2 )]
-anchor_right = 0.15
-anchor_bottom = 0.075
+[node name="BackButton" parent="Container" instance=ExtResource( 2 )]
+anchor_right = 0.1
+anchor_bottom = 0.1
 margin_right = 0.0
 margin_bottom = 0.0
 
-[node name="Label" type="Label" parent="Panel/Container"]
-anchor_left = 0.2
+[node name="Name" type="Label" parent="Container"]
+anchor_left = 0.15
 anchor_right = 0.95
-anchor_bottom = 0.075
+anchor_bottom = 0.09
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "Gauntlet Name Here"
@@ -60,7 +58,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator" type="HSeparator" parent="Panel/Container"]
+[node name="Separator" type="HSeparator" parent="Container"]
 anchor_top = 0.1
 anchor_right = 1.0
 anchor_bottom = 0.1
@@ -69,7 +67,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeaderboardLabel" type="Label" parent="Panel/Container"]
+[node name="LeaderboardLabel" type="Label" parent="Container"]
 anchor_top = 0.113
 anchor_right = 1.0
 anchor_bottom = 0.15
@@ -79,7 +77,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Leaderboard" type="Control" parent="Panel/Container"]
+[node name="Leaderboard" type="Control" parent="Container"]
 anchor_top = 0.15
 anchor_right = 1.0
 anchor_bottom = 0.325
@@ -87,14 +85,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="First" type="Control" parent="Panel/Container/Leaderboard"]
+[node name="First" type="Control" parent="Container/Leaderboard"]
 anchor_right = 1.0
 anchor_bottom = 0.3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Panel/Container/Leaderboard/First"]
+[node name="Name" type="Label" parent="Container/Leaderboard/First"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -112,7 +110,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Panel/Container/Leaderboard/First"]
+[node name="Score" type="Label" parent="Container/Leaderboard/First"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -129,7 +127,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Icon" type="TextureRect" parent="Panel/Container/Leaderboard/First"]
+[node name="Icon" type="TextureRect" parent="Container/Leaderboard/First"]
 anchor_left = 0.1
 anchor_right = 0.175
 anchor_bottom = 1.0
@@ -140,7 +138,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Second" type="Control" parent="Panel/Container/Leaderboard"]
+[node name="Second" type="Control" parent="Container/Leaderboard"]
 anchor_top = 0.3
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -150,7 +148,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Panel/Container/Leaderboard/Second"]
+[node name="Name" type="Label" parent="Container/Leaderboard/Second"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -164,7 +162,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Panel/Container/Leaderboard/Second"]
+[node name="Score" type="Label" parent="Container/Leaderboard/Second"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -181,7 +179,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel/Container/Leaderboard/Second"]
+[node name="Label" type="Label" parent="Container/Leaderboard/Second"]
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.175
@@ -197,7 +195,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Third" type="Control" parent="Panel/Container/Leaderboard"]
+[node name="Third" type="Control" parent="Container/Leaderboard"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.7
@@ -207,7 +205,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Panel/Container/Leaderboard/Third"]
+[node name="Name" type="Label" parent="Container/Leaderboard/Third"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -221,7 +219,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Panel/Container/Leaderboard/Third"]
+[node name="Score" type="Label" parent="Container/Leaderboard/Third"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -238,7 +236,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel/Container/Leaderboard/Third"]
+[node name="Label" type="Label" parent="Container/Leaderboard/Third"]
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.175
@@ -254,7 +252,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fourth" type="Control" parent="Panel/Container/Leaderboard"]
+[node name="Fourth" type="Control" parent="Container/Leaderboard"]
 anchor_top = 0.7
 anchor_right = 1.0
 anchor_bottom = 0.9
@@ -264,7 +262,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Panel/Container/Leaderboard/Fourth"]
+[node name="Name" type="Label" parent="Container/Leaderboard/Fourth"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -278,7 +276,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Panel/Container/Leaderboard/Fourth"]
+[node name="Score" type="Label" parent="Container/Leaderboard/Fourth"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -295,7 +293,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel/Container/Leaderboard/Fourth"]
+[node name="Label" type="Label" parent="Container/Leaderboard/Fourth"]
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.175
@@ -311,7 +309,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="User" type="Control" parent="Panel/Container/Leaderboard"]
+[node name="User" type="Control" parent="Container/Leaderboard"]
 anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 1.1
@@ -321,7 +319,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Panel/Container/Leaderboard/User"]
+[node name="Name" type="Label" parent="Container/Leaderboard/User"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -335,7 +333,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Panel/Container/Leaderboard/User"]
+[node name="Score" type="Label" parent="Container/Leaderboard/User"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -352,7 +350,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Panel/Container/Leaderboard/User"]
+[node name="Label" type="Label" parent="Container/Leaderboard/User"]
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.175
@@ -369,7 +367,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VSeparator" type="VSeparator" parent="Panel/Container/Leaderboard"]
+[node name="VSeparator" type="VSeparator" parent="Container/Leaderboard"]
 anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 0.95
@@ -378,12 +376,74 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator2" type="HSeparator" parent="Panel/Container"]
+[node name="Separator2" type="HSeparator" parent="Container"]
 anchor_top = 0.35
 anchor_right = 1.0
 anchor_bottom = 0.35
 margin_bottom = 4.0
 theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EventsLabel" type="Label" parent="Container"]
+anchor_top = 0.363
+anchor_right = 1.0
+anchor_bottom = 0.363
+margin_top = 0.27002
+custom_fonts/font = ExtResource( 6 )
+text = "Events"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Events" type="Control" parent="Container"]
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 0.575
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="ItemList" parent="Container/Events"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Separator3" type="HSeparator" parent="Container"]
+anchor_top = 0.625
+anchor_right = 1.0
+anchor_bottom = 0.625
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FeedLabel" type="Label" parent="Container"]
+anchor_top = 0.636
+anchor_right = 1.0
+anchor_bottom = 0.636
+margin_top = 0.27002
+custom_fonts/font = ExtResource( 6 )
+text = "Feed"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Feed" type="Control" parent="Container"]
+anchor_top = 0.675
+anchor_right = 1.0
+anchor_bottom = 0.9
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="List" type="ItemList" parent="Container/Feed"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

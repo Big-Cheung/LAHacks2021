@@ -1,63 +1,80 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Icons/back-button.png" type="Texture" id=2]
+[ext_resource path="res://Icons/x-button.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/CloseMenuButtonScript.gd" type="Script" id=2]
 [ext_resource path="res://Style/Fonts/DefaultFont32pt.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Style/HomeMenu/HomeMenuDefault.tres" type="StyleBox" id=4]
-[ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=7]
+[ext_resource path="res://Style/HomeMenu/HomeMenuPress.tres" type="StyleBox" id=5]
+[ext_resource path="res://Style/HomeMenu/HomeMenuHover.tres" type="StyleBox" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+corner_radius_top_left = 42
+corner_radius_top_right = 42
+corner_radius_bottom_right = 42
+corner_radius_bottom_left = 42
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.521569, 0.521569, 0.521569, 1 )
+corner_radius_top_left = 42
+corner_radius_top_right = 42
+corner_radius_bottom_right = 42
+corner_radius_bottom_left = 42
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 1 )
+corner_radius_top_left = 42
+corner_radius_top_right = 42
+corner_radius_bottom_right = 42
+corner_radius_bottom_left = 42
+
+[sub_resource type="StyleBoxFlat" id=4]
 corner_radius_top_left = 125
 corner_radius_top_right = 125
 corner_radius_bottom_right = 125
 corner_radius_bottom_left = 125
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 0, 0, 1 )
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 1, 1, 1, 1 )
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color( 0, 0, 0, 1 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 1, 1, 1, 1 )
-border_color = Color( 0, 0, 0, 1 )
-
 [node name="ProfilePage" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_right = 1080.0
+margin_bottom = 1920.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Button" type="Button" parent="."]
+anchor_left = 1.055
+anchor_top = 0.056
+anchor_right = 1.055
+anchor_bottom = 0.056
+margin_left = -42.1023
+margin_top = -41.5031
+margin_right = 42.8977
+margin_bottom = 42.4969
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x-button" type="Sprite" parent="."]
+position = Vector2( 950, 100 )
+scale = Vector2( 0.520689, 0.520689 )
+texture = ExtResource( 1 )
+
 [node name="ProfilePicture" type="Container" parent="."]
-anchor_left = 0.612
-anchor_top = 0.014
-anchor_right = 0.897
-anchor_bottom = 0.232
-margin_left = -0.800049
-margin_top = -0.200001
-margin_right = -0.299988
-margin_bottom = -0.600006
+margin_left = 14.1422
+margin_top = 25.4559
+margin_right = 372.142
+margin_bottom = 417.456
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -65,184 +82,22 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="ProfilePicture"]
 anchor_top = 0.099
 anchor_bottom = 0.099
+margin_left = 50.0
 margin_top = -10.554
-margin_right = 250.0
+margin_right = 300.0
 margin_bottom = 239.446
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="ProfilePicture"]
-margin_left = 12.0
+margin_left = 50.0
 margin_top = 300.0
-margin_right = 240.0
-margin_bottom = 340.0
-custom_styles/hover = ExtResource( 4 )
-custom_styles/pressed = ExtResource( 4 )
-custom_styles/focus = ExtResource( 4 )
-custom_styles/disabled = ExtResource( 4 )
+margin_right = 305.0
+margin_bottom = 350.0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 5 )
 custom_styles/normal = ExtResource( 4 )
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Change Icon"
-
-[node name="ProfileInfo" type="Container" parent="."]
-margin_left = 124.0
-margin_top = 451.0
-margin_right = 790.0
-margin_bottom = 1576.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Username-line" type="HSeparator" parent="ProfileInfo"]
-margin_top = 50.0
-margin_right = 666.0
-margin_bottom = 54.0
-custom_styles/separator = SubResource( 2 )
-
-[node name="Username-label" type="RichTextLabel" parent="ProfileInfo"]
-margin_top = 5.0
-margin_right = 180.0
-margin_bottom = 50.0
-custom_fonts/normal_font = ExtResource( 3 )
-text = "username-"
-
-[node name="Username-edit" type="LineEdit" parent="ProfileInfo"]
-margin_left = 180.0
-margin_right = 666.0
-margin_bottom = 50.0
-custom_styles/read_only = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-
-[node name="Bio-label" type="RichTextLabel" parent="ProfileInfo"]
-margin_top = 80.0
-margin_right = 70.0
-margin_bottom = 125.0
-custom_fonts/normal_font = ExtResource( 3 )
-text = "bio-"
-
-[node name="Bio-box" type="Panel" parent="ProfileInfo"]
-margin_top = 120.0
-margin_right = 666.0
-margin_bottom = 280.0
-custom_styles/panel = SubResource( 4 )
-
-[node name="Bio-edit" type="TextEdit" parent="ProfileInfo"]
-margin_left = 8.0
-margin_top = 130.0
-margin_right = 658.0
-margin_bottom = 270.0
-custom_styles/read_only = SubResource( 5 )
-custom_styles/focus = SubResource( 5 )
-custom_styles/normal = SubResource( 5 )
-custom_styles/completion = SubResource( 5 )
-custom_fonts/font = ExtResource( 3 )
-custom_colors/member_variable_color = Color( 0, 0, 0, 1 )
-custom_colors/code_folding_color = Color( 0, 0, 0, 1 )
-custom_colors/function_color = Color( 0, 0, 0, 1 )
-custom_colors/safe_line_number_color = Color( 0, 0, 0, 1 )
-custom_colors/symbol_color = Color( 0, 0, 0, 1 )
-custom_colors/caret_background_color = Color( 0, 0, 0, 1 )
-custom_colors/bookmark_color = Color( 0, 0, 0, 1 )
-custom_colors/selection_color = Color( 0, 0, 0, 1 )
-custom_colors/caret_color = Color( 0, 0, 0, 1 )
-custom_colors/breakpoint_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/line_number_color = Color( 0, 0, 0, 1 )
-custom_colors/completion_font_color = Color( 0, 0, 0, 1 )
-custom_colors/completion_scroll_color = Color( 0, 0, 0, 1 )
-custom_colors/background_color = Color( 0, 0, 0, 1 )
-custom_colors/number_color = Color( 0, 0, 0, 1 )
-custom_colors/completion_background_color = Color( 0, 0, 0, 1 )
-custom_colors/brace_mismatch_color = Color( 0, 0, 0, 1 )
-custom_colors/current_line_color = Color( 0, 0, 0, 1 )
-custom_colors/completion_selected_color = Color( 0, 0, 0, 1 )
-custom_colors/executing_line_color = Color( 0, 0, 0, 1 )
-custom_colors/mark_color = Color( 0, 0, 0, 1 )
-custom_colors/word_highlighted_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_readonly = Color( 0, 0, 0, 1 )
-custom_colors/completion_existing_color = Color( 0, 0, 0, 1 )
-wrap_enabled = true
-
-[node name="Account-line" type="HSeparator" parent="ProfileInfo"]
-margin_top = 370.0
-margin_right = 666.0
-margin_bottom = 374.0
-custom_styles/separator = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Account-label" type="RichTextLabel" parent="ProfileInfo"]
-margin_top = 330.0
-margin_right = 150.0
-margin_bottom = 370.0
-custom_fonts/normal_font = ExtResource( 3 )
-text = "account-"
-
-[node name="Account-data" type="RichTextLabel" parent="ProfileInfo"]
-margin_left = 150.0
-margin_top = 330.0
-margin_right = 666.0
-margin_bottom = 370.0
-custom_fonts/normal_font = ExtResource( 3 )
-
-[node name="Account-age-line" type="HSeparator" parent="ProfileInfo"]
-margin_top = 450.0
-margin_right = 666.0
-margin_bottom = 454.0
-custom_styles/separator = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Account-age-label" type="RichTextLabel" parent="ProfileInfo"]
-margin_top = 410.0
-margin_right = 210.0
-margin_bottom = 450.0
-custom_fonts/normal_font = ExtResource( 3 )
-text = "account age-"
-
-[node name="Account-age-data" type="RichTextLabel" parent="ProfileInfo"]
-margin_left = 210.0
-margin_top = 410.0
-margin_right = 666.0
-margin_bottom = 450.0
-custom_fonts/normal_font = ExtResource( 3 )
-
-[node name="Gauntlet-wins-line" type="HSeparator" parent="ProfileInfo"]
-margin_top = 530.0
-margin_right = 666.0
-margin_bottom = 534.0
-custom_styles/separator = SubResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Gauntlet-wins-label" type="RichTextLabel" parent="ProfileInfo"]
-margin_top = 490.0
-margin_right = 230.0
-margin_bottom = 530.0
-custom_fonts/normal_font = ExtResource( 3 )
-text = "gauntlet wins-"
-
-[node name="Gauntlet-wins-data" type="RichTextLabel" parent="ProfileInfo"]
-margin_left = 230.0
-margin_top = 490.0
-margin_right = 666.0
-margin_bottom = 530.0
-custom_fonts/normal_font = ExtResource( 3 )
-
-[node name="back-button" type="Sprite" parent="."]
-position = Vector2( 124.212, 107.27 )
-scale = Vector2( 0.159104, 0.159104 )
-texture = ExtResource( 2 )
