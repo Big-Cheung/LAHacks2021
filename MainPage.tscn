@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Icons/settings-wheel.png" type="Texture" id=1]
 [ext_resource path="res://Icons/banner-back.jpg" type="Texture" id=2]
@@ -12,7 +12,6 @@
 [ext_resource path="res://Icons/door.png" type="Texture" id=10]
 [ext_resource path="res://Icons/check-mark.png" type="Texture" id=11]
 [ext_resource path="res://MainPage.gd" type="Script" id=12]
-[ext_resource path="res://Style/Fonts/DefaultFont32pt.tres" type="DynamicFont" id=13]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.498039, 0.819608, 0.996078, 1 )
@@ -243,6 +242,8 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = 12.0
+margin_bottom = 22.0
 custom_styles/hover = SubResource( 4 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = SubResource( 4 )
@@ -280,19 +281,6 @@ modulate = Color( 1, 1, 1, 0.560784 )
 position = Vector2( 625, 705 )
 scale = Vector2( 0.095, 0.15 )
 texture = ExtResource( 11 )
-
-[node name="Join-error-msg" type="RichTextLabel" parent="Join Popup"]
-anchor_left = 0.283
-anchor_top = 0.42
-anchor_right = 0.721
-anchor_bottom = 0.455
-margin_top = -0.240051
-custom_fonts/normal_font = ExtResource( 13 )
-custom_colors/default_color = Color( 1, 0.164706, 0, 1 )
-text = "Error: Gauntlet Not Found"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Settings Popup" type="Container" parent="."]
 visible = false
