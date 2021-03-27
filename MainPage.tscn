@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Icons/settings-wheel.png" type="Texture" id=1]
 [ext_resource path="res://Icons/banner-back.jpg" type="Texture" id=2]
 [ext_resource path="res://Icons/logout.png" type="Texture" id=3]
 [ext_resource path="res://Style/Fonts/DefaultFont64pt.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Icons/x-button.png" type="Texture" id=5]
 [ext_resource path="res://Icons/Trophy.png" type="Texture" id=6]
 [ext_resource path="res://Style/Fonts/DefaultFont128pt.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=8]
@@ -17,16 +18,16 @@ bg_color = Color( 0.498039, 0.819608, 0.996078, 1 )
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 1, 1, 1, 0.54902 )
-
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 1, 1, 0.54902 )
 
 [sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 1, 1, 1, 0.54902 )
+
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0, 0, 0, 0.756863 )
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.184314, 1, 0.541176, 1 )
 
 [sub_resource type="StyleBoxFlat" id=6]
@@ -36,7 +37,6 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
@@ -52,6 +52,18 @@ corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.862745, 1, 0.988235, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 0 )
 
 [node name="MainPage" type="Control"]
 anchor_right = 1.0
@@ -189,7 +201,7 @@ anchor_left = 0.08
 anchor_top = 0.2
 anchor_right = 0.92
 anchor_bottom = 0.45
-custom_styles/bg = SubResource( 4 )
+custom_styles/bg = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -199,7 +211,7 @@ anchor_left = 0.08
 anchor_top = 0.55
 anchor_right = 0.92
 anchor_bottom = 0.8
-custom_styles/bg = SubResource( 5 )
+custom_styles/bg = SubResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -232,11 +244,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 12.0
 margin_bottom = 22.0
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 3 )
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -254,12 +266,12 @@ __meta__ = {
 
 [node name="Confirm Edit" type="Button" parent="Join Popup"]
 anchor_left = 0.645
-anchor_top = 0.361
+anchor_top = 0.362
 anchor_right = 0.722
-anchor_bottom = 0.414
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/normal = SubResource( 2 )
+anchor_bottom = 0.415
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -271,11 +283,11 @@ scale = Vector2( 0.095, 0.15 )
 texture = ExtResource( 11 )
 
 [node name="Settings Popup" type="Container" parent="."]
-visible = false
-anchor_left = 0.045
+anchor_left = 0.025
 anchor_top = 0.106
 anchor_right = 0.5
 anchor_bottom = 0.279
+margin_left = -7.62939e-06
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -319,3 +331,36 @@ text = "Logout   "
 position = Vector2( 326.172, 250.977 )
 scale = Vector2( 0.117362, 0.117362 )
 texture = ExtResource( 3 )
+
+[node name="close-popup-back" type="Panel" parent="Settings Popup"]
+anchor_left = 0.021
+anchor_top = 0.03
+anchor_right = 0.343
+anchor_bottom = 0.482
+margin_left = -8.8975
+margin_top = -146.142
+margin_right = -8.69751
+margin_bottom = -145.342
+custom_styles/panel = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="x-button" type="Sprite" parent="Settings Popup"]
+position = Vector2( 67, -66.733 )
+scale = Vector2( 0.605, 0.605 )
+texture = ExtResource( 5 )
+
+[node name="close-popup-button" type="Button" parent="Settings Popup"]
+margin_left = 20.0
+margin_top = -112.8
+margin_right = 115.0
+margin_bottom = -17.8
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 9 )
+custom_styles/normal = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

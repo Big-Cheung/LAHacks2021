@@ -15,7 +15,7 @@
 [ext_resource path="res://ProfilePage.gd" type="Script" id=13]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.733333, 0.733333, 0.733333, 1 )
+bg_color = Color( 0.933333, 0.933333, 0.933333, 1 )
 corner_radius_top_left = 125
 corner_radius_top_right = 125
 corner_radius_bottom_right = 125

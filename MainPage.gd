@@ -13,6 +13,7 @@ func _ready():
 	$"Join Popup".connect("pressed", self, "hidePopup")
 	$"Join Popup/Confirm Edit".connect("pressed", self, "addTournament")
 	$"Banner/settings-button".connect("pressed", self, "displayMenu")
+	$"Settings Popup/close-popup-button".connect("pressed", self, "displayMenu")
 	$"Settings Popup/ProfileButton".connect("pressed", self, "displayProfile")
 	$"Settings Popup/LogoutButton".connect("pressed", self, "displayTitle")
 	$"Create Gauntlet/create-gauntlet-button".connect("pressed", self, "displayCreateGauntlet")
