@@ -3,6 +3,7 @@ extends Node
 var lastPage = "res://Base.tcsn"
 
 var userID = 0
+var userSpriteID = 0
 var currentGauntlet = 0
 
 var gauntletData = {
