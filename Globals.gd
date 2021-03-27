@@ -8,10 +8,10 @@ var userID = 0
 var currentGauntlet = 0
 
 var gauntletData = {
-	"id":0,
+	"id":currentGauntlet,
 	"name":"default",
-	"owner":0,
-	"playerData":[],
+	"owner":userID,
+	"playerData":{},
 	"eventData":[]
 }
 

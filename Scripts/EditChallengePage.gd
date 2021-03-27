@@ -42,7 +42,15 @@ func _ready():
 func createEvent():
 	$"Container/EventList".add_item("Blank Event")
 	$"Container/EventList".select($"Container/EventList".get_item_count() - 1)
-	Globals.gauntletData.eventData.push_back({"name":"Blank Event","start":5,"growth":5,"points":10,"rounds":5,"round":1})
+	Globals.gauntletData.eventData.push_back({
+		"name":"Blank Event",
+		"start":5,
+		"growth":5,
+		"points":10,
+		"rounds":5,
+		"round":1,
+		"completed":0
+		})
 	$"Container/EventList".emit_signal("item_selected", $"Container/EventList".get_item_count() - 1)
 	checkForEmpty()
 	
