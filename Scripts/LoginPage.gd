@@ -8,6 +8,7 @@ func _ready():
 	Firebase.Auth.connect("login_failed",self,"loginFailed")
 	Firebase.Auth.connect("login_succeeded",self,"loginPassed")
 	Firebase.Auth.connect("signup_succeeded",self,"loginPassed")
+	Firebase.Auth.connect("userdata_received",self,"setUserData")
 	
 	
 func signup():
@@ -21,8 +22,15 @@ func signin():
 func loginPassed(data):
 	var user = Firebase.Auth.get_user_data()
 	Globals.userID = data.localid
-	get_tree().change_scene("res://MainPage.tscn")
+	
 
 func loginFailed(code, msg):
 	$Signin/Error.visible = true
 	$Signin/Error.text = "Unable to login : " + String(msg)
+	
+func setUserData(data):
+	Globals.userData.id = Globals.userID
+	Globals.userData.name = data["display name"]
+	Globals.userData.created = data.created_at
+	
+	get_tree().change_scene("res://MainPage.tscn")
