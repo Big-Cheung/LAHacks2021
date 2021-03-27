@@ -4,7 +4,7 @@ var gauntletsPath = "user://Gauntlets.json"
 var usersPath = "user://Players.json"
 var lastPage = "res://Base.tscn"
 
-var userID = 0
+var userID = ""
 var currentGauntlet = "anb31sa"
 
 var gauntletData = {
@@ -21,11 +21,11 @@ var playerDataPoint = {
 	"score":0
 }
 var userData = {
-	"id":0,
-	"name":"Cheung",
+	"id":"",
+	"name":"username",
 	"icon":0,
-	"bio":"This is a bio",
-	"created":0,
+	"bio":"hello world",
+	"created":"",
 	"wins":0,
 	"gauntlets":[]
 }
