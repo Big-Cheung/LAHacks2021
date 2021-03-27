@@ -34,6 +34,27 @@ var userData = {
 func goBack():
 	get_tree().change_scene(String(lastPage))
 
+func loadUserData():
+	var load_data = File.new()
+	if not (load_data.file_exists(Globals.usersPath)):
+		return false
+		
+	load_data.open(Globals.usersPath, File.READ)
+	var Users = parse_json(load_data.get_as_text())
+	if not (Users.has(String(Globals.userID))):
+		load_data.close()
+		return false
+		
+	Globals.userData = Users[String(Globals.currentUser)]
+	load_data.close()
+	return true
+
+func saveUserToFirebase():
+	var dbREF = Firebase.Database.get_database_reference(Globals.usersPath + "/" + Globals.userID)
+	if (dbREF.get_data() == {}):
+		dbREF.push(Globals.userData)
+		return
+	dbREF.update(Globals.userData)
 
 func loadGauntletData():
 	var load_data = File.new()
