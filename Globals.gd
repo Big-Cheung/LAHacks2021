@@ -5,6 +5,7 @@ var usersPath = "user://Players.json"
 var lastPage = "res://Base.tscn"
 
 var userID = 0
+var userSpriteID = 0
 var currentGauntlet = 0
 
 var gauntletData = {
