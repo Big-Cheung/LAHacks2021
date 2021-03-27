@@ -4,7 +4,7 @@ var gauntletsPath = "user://Gauntlets.json"
 var usersPath = "user://Players.json"
 var lastPage = "res://Base.tscn"
 
-var userID = 0
+var userID = ""
 var currentGauntlet = "anb31sa"
 
 var gauntletData = {
@@ -21,11 +21,11 @@ var playerDataPoint = {
 	"score":0
 }
 var userData = {
-	"id":0,
-	"name":"Cheung",
+	"id":"",
+	"name":"username",
 	"icon":0,
-	"bio":"This is a bio",
-	"created":0,
+	"bio":"hello world",
+	"created":"",
 	"wins":0,
 	"gauntlets":[]
 }
@@ -34,6 +34,27 @@ var userData = {
 func goBack():
 	get_tree().change_scene(String(lastPage))
 
+func loadUserData():
+	var load_data = File.new()
+	if not (load_data.file_exists(Globals.usersPath)):
+		return false
+		
+	load_data.open(Globals.usersPath, File.READ)
+	var Users = parse_json(load_data.get_as_text())
+	if not (Users.has(String(Globals.userID))):
+		load_data.close()
+		return false
+		
+	Globals.userData = Users[String(Globals.currentUser)]
+	load_data.close()
+	return true
+
+func saveUserToFirebase():
+	var dbREF = Firebase.Database.get_database_reference(Globals.usersPath + "/" + Globals.userID)
+	if (dbREF.get_data() == {}):
+		dbREF.push(Globals.userData)
+		return
+	dbREF.update(Globals.userData)
 
 func loadGauntletData():
 	var load_data = File.new()
