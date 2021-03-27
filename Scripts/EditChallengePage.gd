@@ -76,7 +76,6 @@ func changeGauntletName(text):
 func changeText(text):
 	$"Container/EventList".set_item_text(selected,text)
 	Globals.gauntletData.eventData[selected]["name"] = text
-	$"Container/EventMenu/EventName".text = text
 
 func startValueChanged(newVal):
 	Globals.gauntletData.eventData[selected]["start"] = newVal
@@ -95,32 +94,30 @@ func roundsValueChanged(newVal):
 	$"Container/EventMenu/Rounds/Num".value = newVal
 	
 func saveGauntlet():
-	print("You clicked!")
-	
 	#Read the data
 	var save_data = File.new()
-	var exists = save_data.file_exists("user://Gauntlets.json")
-	save_data.open("user://Gauntlets.json", File.READ)
+	var exists = save_data.file_exists(Globals.gauntletsPath)
+	save_data.open(Globals.gauntletsPath, File.READ)
 	var Gauntlets = {}
 	if (exists):
 		Gauntlets = parse_json(save_data.get_as_text())
 	save_data.close()
 	
 	#Write the data
-	save_data.open("user://Gauntlets.json", File.WRITE)
+	save_data.open(Globals.gauntletsPath, File.WRITE)
 	Gauntlets[String(Globals.currentGauntlet)] = Globals.gauntletData
 	save_data.store_string(to_json(Gauntlets))
 	save_data.close()
 	
 	#Change back to the previous scene
-	get_tree().change_scene("res://Base.tscn")
+	Globals.goBack()
 
 func loadGauntlet():
 	var load_data = File.new()
-	if not (load_data.file_exists("user://Gauntlets.json")):
+	if not (load_data.file_exists(Globals.gauntletsPath)):
 		return
 		
-	load_data.open("user://Gauntlets.json", File.READ)
+	load_data.open(Globals.gauntletsPath, File.READ)
 	var Gauntlets = parse_json(load_data.get_as_text())
 	if (Gauntlets.has(String(Globals.currentGauntlet))):
 		Globals.gauntletData = Gauntlets[String(Globals.currentGauntlet)]
