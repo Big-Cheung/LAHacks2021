@@ -9,7 +9,7 @@ var currentGauntlet = 0
 
 var gauntletData = {
 	"id":currentGauntlet,
-	"name":"",
+	"name":"some name",
 	"owner":userID,
 	"playerData":{},
 	"eventData":[],

@@ -14,7 +14,7 @@ thickness = 2
 vertical = true
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0, 0, 0, 0.901961 )
+bg_color = Color( 0, 0, 0, 0.847059 )
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 1, 1, 1, 1 )
@@ -51,8 +51,35 @@ anchor_bottom = 0.1
 margin_right = 0.0
 margin_bottom = 0.0
 
+[node name="JoinCode" type="ColorRect" parent="Container"]
+anchor_left = 0.65
+anchor_right = 1.0
+anchor_bottom = 0.023
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join-code-text" type="RichTextLabel" parent="Container/JoinCode"]
+anchor_right = 0.6
+anchor_bottom = 1.0
+custom_fonts/normal_font = ExtResource( 6 )
+text = " Join Code:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Join-code-info" type="RichTextLabel" parent="Container/JoinCode"]
+anchor_left = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/normal_font = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Name" type="Label" parent="Container"]
 anchor_left = 0.15
+anchor_top = 0.032
 anchor_right = 0.95
 anchor_bottom = 0.09
 theme = ExtResource( 1 )
@@ -506,7 +533,6 @@ __meta__ = {
 }
 
 [node name="Submit" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -574,8 +600,8 @@ dialog_text = "Choose your submission"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.png", "*.jpg", "*.jpeg" )
-current_dir = "/Hackathons/LAHacks2021"
-current_path = "/Hackathons/LAHacks2021/"
+current_dir = "/CWP_DATA/Documents/Godot/LAHacks2021"
+current_path = "/CWP_DATA/Documents/Godot/LAHacks2021/"
 __meta__ = {
 "_edit_use_anchors_": false
 }

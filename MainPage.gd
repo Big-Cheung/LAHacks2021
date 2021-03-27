@@ -8,10 +8,10 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$"Create Gauntlet/create-gauntlet-button".connect("pressed", self, "createGauntlet")
-	$"Join Gauntlet/add-gauntlet-button".connect("pressed", self, "addGauntlet")
-	$"Join Popup".connect("pressed", self, "hidePopup")
-	$"Join Popup/Confirm Edit".connect("pressed", self, "addTournament")
+	$"Join Gauntlet/add-gauntlet-button".connect("pressed", self, "showJoinPopup")
+	$"Join Popup".connect("pressed", self, "hideJoinPopup")
+	$"Join Popup/Confirm Edit".connect("pressed", self, "attemptJoin")
+	
 	$"Banner/settings-button".connect("pressed", self, "displayMenu")
 	$"Settings Popup/close-popup-button".connect("pressed", self, "displayMenu")
 	$"Settings Popup/ProfileButton".connect("pressed", self, "displayProfile")
@@ -21,13 +21,14 @@ func _ready():
 	$"Join Popup".visible = false
 	$"Settings Popup".visible = false
 	
-func addGauntlet():
+func showJoinPopup():
 	$"Join Popup".visible = true
+	$"Join Popup/Join-error-msg".visible = false
 	
-func hidePopup():
+func hideJoinPopup():
 	$"Join Popup".visible = false
 	
-func addTournament():
+func attemptJoin():
 	$"Join Popup".visible = false
 	
 func displayMenu():

@@ -7,6 +7,8 @@ func _ready():
 	
 	$Container/Submit.connect("pressed",self,"showPopup")
 	$Submit/EscapePanel.connect("pressed",self,"hidePopup")
+	$Submit.visible = false
+	$"Container/JoinCode/Join-code-info".text = String(Globals.gauntletData["id"])
 
 
 func loadGauntlet():
