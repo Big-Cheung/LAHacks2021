@@ -283,6 +283,7 @@ scale = Vector2( 0.095, 0.15 )
 texture = ExtResource( 11 )
 
 [node name="Settings Popup" type="Container" parent="."]
+visible = false
 anchor_left = 0.025
 anchor_top = 0.106
 anchor_right = 0.5
