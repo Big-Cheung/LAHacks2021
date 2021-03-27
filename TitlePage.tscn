@@ -1,21 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
+[ext_resource path="res://Icons/gradient.png" type="Texture" id=1]
 [ext_resource path="res://Style/Fonts/DefaultFont32pt.tres" type="DynamicFont" id=7]
 [ext_resource path="res://Style/DefaultTheme.tres" type="Theme" id=8]
 
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.227451, 0.768627, 0.94902, 1, 0.654902, 0.654902, 0.658824, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-width = 900
-
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color( 1, 1, 1, 1 )
 corner_radius_top_left = 90
 corner_radius_top_right = 90
@@ -43,18 +37,16 @@ __meta__ = {
 }
 
 [node name="Background" type="TextureRect" parent="."]
-anchor_right = 2.0
-anchor_bottom = 0.5
-margin_left = 900.0
-margin_right = 900.0
-rect_rotation = 90.0
-texture = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
 stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Control2" type="Control" parent="."]
+[node name="ProfileIcon" type="Control" parent="."]
 anchor_left = 0.5
 anchor_top = 0.15
 anchor_right = 0.5
@@ -70,7 +62,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProfileCircle" type="Panel" parent="Control2"]
+[node name="ProfileCircle" type="Panel" parent="ProfileIcon"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_clip_content = true
@@ -79,7 +71,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProfileHead" type="Panel" parent="Control2/ProfileCircle"]
+[node name="ProfileHead" type="Panel" parent="ProfileIcon/ProfileCircle"]
 anchor_left = 0.222
 anchor_top = 0.167
 anchor_right = 0.778
@@ -94,7 +86,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Crop ProfileBody" type="Control" parent="Control2/ProfileCircle"]
+[node name="Crop ProfileBody" type="Control" parent="ProfileIcon/ProfileCircle"]
 anchor_left = -0.011
 anchor_right = 1.033
 anchor_bottom = 0.883
@@ -105,7 +97,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProfileBody" type="Panel" parent="Control2/ProfileCircle/Crop ProfileBody"]
+[node name="ProfileBody" type="Panel" parent="ProfileIcon/ProfileCircle/Crop ProfileBody"]
 anchor_left = 0.192
 anchor_top = 0.785
 anchor_right = 0.83
@@ -118,40 +110,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ProfileIcon" type="Container" parent="."]
-anchor_left = 0.42
-anchor_top = 0.1
-anchor_right = 0.6
-anchor_bottom = 0.2
-margin_top = -0.400009
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text Fields" type="Container" parent="."]
-anchor_left = 0.2
-anchor_top = 0.288
-anchor_right = 0.8
-anchor_bottom = 0.8
-theme = ExtResource( 8 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Control" type="Control" parent="."]
-anchor_left = 0.2
+[node name="Signin" type="Control" parent="."]
+anchor_left = 0.203143
 anchor_top = 0.3
-anchor_right = 0.8
+anchor_right = 0.803143
 anchor_bottom = 0.8
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Signup Button" type="Button" parent="Control"]
-margin_left = 132.5
-margin_top = 378.4
-margin_right = 407.5
-margin_bottom = 453.4
+[node name="Signup" type="Button" parent="Signin"]
+anchor_left = 0.245
+anchor_top = 0.45
+anchor_right = 0.755
+anchor_bottom = 0.525
+margin_right = -0.200043
+margin_bottom = -0.200043
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 5 )
 custom_styles/focus = SubResource( 5 )
@@ -164,56 +138,112 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EmailLine" type="HSeparator" parent="Control"]
-margin_top = 198.4
-margin_right = 540.0
-margin_bottom = 202.4
-
-[node name="Email Address" type="RichTextLabel" parent="Control"]
-margin_top = 158.4
-margin_right = 230.0
-margin_bottom = 208.4
-custom_fonts/normal_font = ExtResource( 7 )
-custom_colors/default_color = Color( 1, 1, 1, 1 )
-text = "Email Address-"
-
-[node name="EmailField" type="LineEdit" parent="Control"]
-margin_left = 230.0
-margin_top = 158.4
-margin_right = 540.0
-margin_bottom = 202.4
-custom_styles/read_only = SubResource( 4 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/normal = SubResource( 4 )
+[node name="Signin" type="Button" parent="Signin"]
+anchor_left = 0.245
+anchor_top = 0.575
+anchor_right = 0.755
+anchor_bottom = 0.65
+margin_right = -0.200043
+margin_bottom = -0.200043
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
 custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 0.403922, 0.403922, 0.403922, 1 )
+text = "Sign in"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PasswordLine" type="HSeparator" parent="Control"]
-margin_top = 288.4
-margin_right = 540.0
-margin_bottom = 292.4
+[node name="EmailHolder" type="Control" parent="Signin"]
+anchor_top = 0.075
+anchor_right = 1.0
+anchor_bottom = 0.2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Password" type="RichTextLabel" parent="Control"]
-margin_top = 248.4
-margin_right = 170.0
-margin_bottom = 298.4
-custom_fonts/normal_font = ExtResource( 7 )
-custom_colors/default_color = Color( 1, 1, 1, 1 )
-text = "Password-"
+[node name="EmailLabel" type="Label" parent="Signin/EmailHolder"]
+anchor_top = 0.151
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.0124989
+margin_bottom = 0.5
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "Email Address"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="NameField3" type="LineEdit" parent="Control"]
-margin_left = 170.0
-margin_top = 248.4
-margin_right = 540.0
-margin_bottom = 292.4
+[node name="Email" type="LineEdit" parent="Signin/EmailHolder"]
+anchor_top = 0.6
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 0.999999
 custom_styles/read_only = SubResource( 4 )
 custom_styles/focus = SubResource( 4 )
 custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EmailLine" type="HSeparator" parent="Signin/EmailHolder"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PassHolder" type="Control" parent="Signin"]
+anchor_top = 0.25
+anchor_right = 1.0
+anchor_bottom = 0.4
+margin_left = 0.707123
+margin_right = 0.707153
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Password" type="LineEdit" parent="Signin/PassHolder"]
+anchor_top = 0.4
+anchor_right = 1.0
+anchor_bottom = 0.5
+custom_styles/read_only = SubResource( 4 )
+custom_styles/focus = SubResource( 4 )
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+secret = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PassLine" type="HSeparator" parent="Signin/PassHolder"]
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 0.7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Signin/PassHolder"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "Password"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
