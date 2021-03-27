@@ -24,6 +24,8 @@ func _ready():
 	$"Container/EventMenu/Growth/Num".connect("value_changed",self,"growthValueChanged")
 	$"Container/EventMenu/Points/Num".connect("value_changed",self,"pointsValueChanged")
 	$"Container/EventMenu/Rounds/Num".connect("value_changed",self,"roundsValueChanged")
+	$"Container/EventMenu/Preview/Prefix".connect("text_changed",self,"prefixChanged")
+	$"Container/EventMenu/Preview/Suffix".connect("text_changed",self,"suffixChanged")
 	
 	#Change the font size(since you cant set default fonts)
 	$"Container/EventMenu/Start/Num".get_line_edit().add_font_override("font", load("res://Style/Fonts/DefaultFont32pt.tres"))
@@ -37,6 +39,7 @@ func _ready():
 	$"Container/EventMenu/Points/Num".share($"Container/EventMenu/Points/Slider")
 	$"Container/EventMenu/Rounds/Num".share($"Container/EventMenu/Rounds/Slider")
 	
+	#updatePreview()
 	checkForEmpty()
 
 func createEvent():
@@ -49,9 +52,12 @@ func createEvent():
 		"points":10,
 		"rounds":5,
 		"round":1,
-		"completed":0
+		"completed":0,
+		"pre":"",
+		"suf":""
 		})
 	$"Container/EventList".emit_signal("item_selected", $"Container/EventList".get_item_count() - 1)
+	updatePreview()
 	checkForEmpty()
 	
 func deleteEvent():
@@ -79,7 +85,6 @@ func hideMenu():
 
 func changeGauntletName(text):
 	Globals.gauntletData.name = text
-	print(Globals.gauntletData.name)
 
 func changeText(text):
 	$"Container/EventList".set_item_text(selected,text)
@@ -88,18 +93,30 @@ func changeText(text):
 func startValueChanged(newVal):
 	Globals.gauntletData.eventData[selected]["start"] = newVal
 	$"Container/EventMenu/Start/Num".value = newVal
+	updatePreview()
 
 func growthValueChanged(newVal):
 	Globals.gauntletData.eventData[selected]["growth"] = newVal
 	$"Container/EventMenu/Growth/Num".value = newVal
+	updatePreview()
 	
 func pointsValueChanged(newVal):
 	Globals.gauntletData.eventData[selected]["points"] = newVal
 	$"Container/EventMenu/Points/Num".value = newVal
+	updatePreview()
 	
 func roundsValueChanged(newVal):
 	Globals.gauntletData.eventData[selected]["rounds"] = newVal
 	$"Container/EventMenu/Rounds/Num".value = newVal
+	updatePreview()
+	
+func prefixChanged(text):
+	Globals.gauntletData.eventData[selected]["pre"] = text
+	updatePreview()
+	
+func suffixChanged(text):
+	Globals.gauntletData.eventData[selected]["suf"] = text
+	updatePreview()
 	
 func saveGauntlet():
 	#Read the data
@@ -121,31 +138,17 @@ func saveGauntlet():
 	Globals.goBack()
 
 func loadGauntlet():
-	var load_data = File.new()
-	if not (load_data.file_exists(Globals.gauntletsPath)):
-		return
-		
-	load_data.open(Globals.gauntletsPath, File.READ)
-	var Gauntlets = parse_json(load_data.get_as_text())
-	if (Gauntlets.has(String(Globals.currentGauntlet))):
-		Globals.gauntletData = Gauntlets[String(Globals.currentGauntlet)]
-	load_data.close()
+	Globals.loadGauntletData()
 	
+	#Change on-screen text boxes
 	$Container/EventList.clear()
 	for item in Globals.gauntletData.eventData:
 		$Container/EventList.add_item(item.name)
 	
 	$Container/Name.text = Globals.gauntletData.name
-	
-	checkForEmpty()
-
-	
 
 func checkForEmpty():
-	if ($Container/EventList.get_item_count() < 1):
-		$Container/Save.disabled = true
-	else:
-		$Container/Save.disabled = false
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	$Container/Save.disabled = ($Container/EventList.get_item_count() < 1)
+
+func updatePreview():
+	$Container/EventMenu/Preview/Preview.text = Globals.gauntletData.eventData[selected]["pre"] + " " + String(Globals.gauntletData.eventData[selected].start) + " " + Globals.gauntletData.eventData[selected]["suf"]

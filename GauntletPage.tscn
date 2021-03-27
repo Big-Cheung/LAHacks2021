@@ -85,14 +85,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="First" type="Control" parent="Container/Leaderboard"]
+[node name="1" type="Control" parent="Container/Leaderboard"]
 anchor_right = 1.0
 anchor_bottom = 0.3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Container/Leaderboard/First"]
+[node name="Name" type="Label" parent="Container/Leaderboard/1"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -110,7 +110,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Container/Leaderboard/First"]
+[node name="Score" type="Label" parent="Container/Leaderboard/1"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -127,7 +127,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Icon" type="TextureRect" parent="Container/Leaderboard/First"]
+[node name="Icon" type="TextureRect" parent="Container/Leaderboard/1"]
 anchor_left = 0.1
 anchor_right = 0.175
 anchor_bottom = 1.0
@@ -138,7 +138,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Second" type="Control" parent="Container/Leaderboard"]
+[node name="2" type="Control" parent="Container/Leaderboard"]
 anchor_top = 0.3
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -148,7 +148,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Container/Leaderboard/Second"]
+[node name="Name" type="Label" parent="Container/Leaderboard/2"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -162,7 +162,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Container/Leaderboard/Second"]
+[node name="Score" type="Label" parent="Container/Leaderboard/2"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -179,7 +179,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Container/Leaderboard/Second"]
+[node name="Label" type="Label" parent="Container/Leaderboard/2"]
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.175
@@ -195,7 +195,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Third" type="Control" parent="Container/Leaderboard"]
+[node name="3" type="Control" parent="Container/Leaderboard"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.7
@@ -205,7 +205,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Container/Leaderboard/Third"]
+[node name="Name" type="Label" parent="Container/Leaderboard/3"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -219,7 +219,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Container/Leaderboard/Third"]
+[node name="Score" type="Label" parent="Container/Leaderboard/3"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -236,7 +236,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Container/Leaderboard/Third"]
+[node name="Label" type="Label" parent="Container/Leaderboard/3"]
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.175
@@ -252,7 +252,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fourth" type="Control" parent="Container/Leaderboard"]
+[node name="4" type="Control" parent="Container/Leaderboard"]
 anchor_top = 0.7
 anchor_right = 1.0
 anchor_bottom = 0.9
@@ -262,7 +262,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Container/Leaderboard/Fourth"]
+[node name="Name" type="Label" parent="Container/Leaderboard/4"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -276,7 +276,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Container/Leaderboard/Fourth"]
+[node name="Score" type="Label" parent="Container/Leaderboard/4"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -293,7 +293,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Container/Leaderboard/Fourth"]
+[node name="Label" type="Label" parent="Container/Leaderboard/4"]
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.175
@@ -309,7 +309,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="User" type="Control" parent="Container/Leaderboard"]
+[node name="5" type="Control" parent="Container/Leaderboard"]
 anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 1.1
@@ -319,7 +319,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="Container/Leaderboard/User"]
+[node name="Name" type="Label" parent="Container/Leaderboard/5"]
 anchor_left = 0.2
 anchor_top = 0.25
 anchor_right = 0.75
@@ -333,7 +333,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="Container/Leaderboard/User"]
+[node name="Score" type="Label" parent="Container/Leaderboard/5"]
 anchor_left = 0.775
 anchor_top = 0.25
 anchor_right = 0.95
@@ -350,7 +350,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Container/Leaderboard/User"]
+[node name="Label" type="Label" parent="Container/Leaderboard/5"]
 anchor_left = 0.1
 anchor_top = 0.25
 anchor_right = 0.175
@@ -413,6 +413,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Empty" type="Label" parent="Container/Events"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.701961, 0.701961, 0.701961, 1 )
+text = "No events to display"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Separator3" type="HSeparator" parent="Container"]
 anchor_top = 0.625
 anchor_right = 1.0
@@ -444,6 +456,18 @@ __meta__ = {
 [node name="List" type="ItemList" parent="Container/Feed"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Empty" type="Label" parent="Container/Feed"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.701961, 0.701961, 0.701961, 1 )
+text = "No new submissions"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
