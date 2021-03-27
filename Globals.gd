@@ -12,7 +12,8 @@ var gauntletData = {
 	"name":"",
 	"owner":userID,
 	"playerData":{},
-	"eventData":[]
+	"eventData":[],
+	"submissions":[]
 }
 
 var playerDataPoint = {

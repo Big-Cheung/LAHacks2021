@@ -86,6 +86,7 @@ __meta__ = {
 }
 
 [node name="1" type="Control" parent="Container/Leaderboard"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 0.3
 __meta__ = {
@@ -139,6 +140,7 @@ __meta__ = {
 }
 
 [node name="2" type="Control" parent="Container/Leaderboard"]
+visible = false
 anchor_top = 0.3
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -196,6 +198,7 @@ __meta__ = {
 }
 
 [node name="3" type="Control" parent="Container/Leaderboard"]
+visible = false
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.7
@@ -253,6 +256,7 @@ __meta__ = {
 }
 
 [node name="4" type="Control" parent="Container/Leaderboard"]
+visible = false
 anchor_top = 0.7
 anchor_right = 1.0
 anchor_bottom = 0.9
@@ -310,6 +314,7 @@ __meta__ = {
 }
 
 [node name="5" type="Control" parent="Container/Leaderboard"]
+visible = false
 anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 1.1
@@ -368,6 +373,7 @@ __meta__ = {
 }
 
 [node name="VSeparator" type="VSeparator" parent="Container/Leaderboard"]
+visible = false
 anchor_top = 0.9
 anchor_right = 1.0
 anchor_bottom = 0.95
@@ -409,6 +415,8 @@ __meta__ = {
 [node name="List" type="ItemList" parent="Container/Events"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
