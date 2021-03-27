@@ -42,7 +42,7 @@ func displayProfile():
 	get_tree().change_scene("res://ProfilePage.tscn")
 	
 func displayTitle():
-	Globals.lastPage = filename
+	Firebase.Auth.logout()
 	get_tree().change_scene("res://TitlePage.tscn")
 	
 func displayCreateGauntlet():
