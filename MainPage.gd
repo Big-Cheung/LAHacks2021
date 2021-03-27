@@ -12,8 +12,12 @@ func _ready():
 	$"Join Gauntlet/add-gauntlet-button".connect("pressed", self, "addGauntlet")
 	$"Join Popup".connect("pressed", self, "hidePopup")
 	$"Join Popup/Confirm Edit".connect("pressed", self, "addTournament")
+	$"Banner/settings-button".connect("pressed", self, "displayMenu")
+	$"Settings Popup/ProfileButton".connect("pressed", self, "displayProfile")
+	$"Settings Popup/LogoutButton".connect("pressed", self, "displayTitle")
 	
 	$"Join Popup".visible = false
+	$"Settings Popup".visible = false
 	
 func addGauntlet():
 	$"Join Popup".visible = true
@@ -24,6 +28,17 @@ func hidePopup():
 func addTournament():
 	$"Join Popup".visible = false
 	
+func displayMenu():
+	if $"Settings Popup".visible == false:
+		$"Settings Popup".visible = true
+	else:
+		$"Settings Popup".visible = false
+	
+func displayProfile():
+	get_tree().change_scene("res://ProfilePage.tscn")
+	
+func displayTitle():
+	get_tree().change_scene("res://TitlePage.tscn")
 	
 
 

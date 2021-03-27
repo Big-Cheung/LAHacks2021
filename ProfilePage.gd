@@ -13,6 +13,7 @@ func _ready():
 	$"ProfileInfo/Bio-edit".connect("text_changed", self, "revealSave")
 	$"ProfileInfo/Bio-save".connect("pressed", self, "saveBio")
 	$"Iconlist".connect("item_selected", self, "changeIcons")
+	$"Background/BackButton".connect("pressed", self, "changeHome")
 	
 	#default display
 	$"Iconlist".visible = false
@@ -22,7 +23,6 @@ func _ready():
 	$"ProfilePicture/Icon-image".texture = load("res://Icons/Sprites/" + String(Globals.userData["icon"]) + ".jpg")
 	$"ProfileInfo/Username-edit".text = Globals.userData["name"]
 	$"ProfileInfo/Bio-edit".text = Globals.userData["bio"]
-	$"ProfileInfo/Account-data".text = String(Globals.userData["id"])
 	$"ProfileInfo/Account-age-data".text = String(Globals.userData["created"])
 	$"ProfileInfo/Gauntlet-wins-data".text = String(Globals.userData["wins"])
 	
@@ -47,6 +47,8 @@ func saveBio():
 	Globals.userData["bio"] = $"ProfileInfo/Bio-edit".text
 	$"ProfileInfo/Bio-save".visible = false
 	
+func changeHome():
+	get_tree().change_scene("res://MainPage.tscn")
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
