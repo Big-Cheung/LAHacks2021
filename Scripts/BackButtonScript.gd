@@ -10,7 +10,7 @@ func _ready():
 	self.connect("pressed", self, "button_pressed")
 
 func button_pressed():
-	get_tree().change_scene(Globals.last_page);
+	Globals.goBack()
 
 
 
