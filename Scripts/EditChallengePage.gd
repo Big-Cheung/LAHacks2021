@@ -119,6 +119,23 @@ func suffixChanged(text):
 	updatePreview()
 	
 func saveGauntlet():
+	#generate gauntlet code
+	var rng = RandomNumberGenerator.new()
+	var code = ""
+	var invalidCode = true
+	while invalidCode:
+		for i in range (0, 6):
+			var letter = rng.randi_range(0, 51)
+			if letter < 26:
+				code += char(65+letter)
+			else:
+				code += char(97+letter-26)
+		var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + code)
+		if (dbREF.get_data() == {}):
+			invalidCode = false
+	Globals.currentGauntlet = code
+	Globals.gauntletData["id"] = code
+	
 	#Read the data
 	var save_data = File.new()
 	var exists = save_data.file_exists(Globals.gauntletsPath)

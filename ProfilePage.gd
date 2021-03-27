@@ -36,9 +36,11 @@ func showIcons():
 func changeIcons(index):
 	Globals.userData["icon"] = index
 	$"ProfilePicture/Icon-image".texture = load("res://Icons/Sprites/" + String(Globals.userData["icon"]) + ".jpg")
+	Globals.saveUserToFirebase()
 
 func changeName(newName):
 	Globals.userData["name"] = newName
+	Globals.saveUserToFirebase()
 	
 func revealSave():
 	$"ProfileInfo/Bio-save".visible = true
@@ -46,6 +48,7 @@ func revealSave():
 func saveBio():
 	Globals.userData["bio"] = $"ProfileInfo/Bio-edit".text
 	$"ProfileInfo/Bio-save".visible = false
+	Globals.saveUserToFirebase()
 	
 func changeHome():
 	get_tree().change_scene("res://MainPage.tscn")
