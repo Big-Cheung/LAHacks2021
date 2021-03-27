@@ -5,7 +5,7 @@ var usersPath = "user://Players.json"
 var lastPage = "res://Base.tscn"
 
 var userID = 0
-var currentGauntlet = 0
+var currentGauntlet = "anb31sa"
 
 var gauntletData = {
 	"id":currentGauntlet,
@@ -50,6 +50,17 @@ func loadGauntletData():
 	load_data.close()
 	return true
 
+func saveGauntletsToFirebase():
+	var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + Globals.currentGauntlet)
+	if (dbREF.get_data() == {}):
+		dbREF.push(Globals.gauntletData)
+		return
+	dbREF.update(Globals.gauntletData)
+	
+func loadGauntletsFromFirebase():
+	var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + Globals.currentGauntlet)
+	var dict = dbREF.get_data()
+	Globals.gauntletData = dict
 
 func _ready():
 	pass
