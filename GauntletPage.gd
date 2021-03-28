@@ -61,6 +61,7 @@ func submitLink():
 	Globals.gauntletData["submissions"][url] = submissionData
 	$Submit.visible = false
 	currentActivitySelected = -1
+	Globals.saveGauntletToFirebase()
 	
 func loadGauntlet():
 	Globals.loadGauntletData()
