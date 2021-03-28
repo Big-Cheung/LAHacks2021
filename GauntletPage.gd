@@ -1,6 +1,7 @@
 extends Control
 
-var currentFeedSelected
+var currentFeedSelected = -1
+var currentActivitySelected = -1
 
 func _ready():
 	loadGauntlet()
@@ -10,6 +11,9 @@ func _ready():
 	$"Container/Feed/Good-button".connect("pressed",self,"upVote")
 	$"Container/Feed/Bad-button".connect("pressed",self,"upVote")
 	$Container/Feed/List.connect("item_selected", self, "voteFeed")
+	$Container/Events/List.connect("item_selected", self, "selectActivity")
+	$"Submit/EscapePanel/SubmitContainer/Link-submission".connect("text_entered", self, "submitLink")
+	$"Submit/EscapePanel/SubmitContainer/Link-submission-2".connect("pressed", self, "submitLink")
 	
 	$Submit.visible = false
 	$"Container/Feed/Good-button".visible = false
@@ -22,16 +26,42 @@ func voteFeed(index):
 	$"Container/Feed/Bad-button".visible = true
 	
 func upVote():
-	$Container/Feed/List.remove_item(currentFeedSelected)
-	$"Container/Feed/Good-button".visible = false
-	$"Container/Feed/Bad-button".visible = false
+	if currentFeedSelected != -1:
+		$Container/Feed/List.remove_item(currentFeedSelected)
+		$"Container/Feed/Good-button".visible = false
+		$"Container/Feed/Bad-button".visible = false
+		currentFeedSelected = -1
 	
 	
 func downVote():
-	$Container/Feed/List.remove_item(currentFeedSelected)
-	$"Container/Feed/Good-button".visible = false
-	$"Container/Feed/Bad-button".visible = false
+	if currentFeedSelected != -1:
+		$Container/Feed/List.remove_item(currentFeedSelected)
+		$"Container/Feed/Good-button".visible = false
+		$"Container/Feed/Bad-button".visible = false
+		currentFeedSelected = -1
 
+func selectActivity(index):
+	currentActivitySelected = index
+
+func showPopup():
+	if currentActivitySelected != -1:
+		$Submit.visible = true
+
+func hidePopup():
+	$Submit.visible = false
+	
+func submitLink():
+	var url = $"Submit/EscapePanel/SubmitContainer/Link-submission".text
+	var submissionData = {
+		"userID": Globals.userID,
+		"event": currentActivitySelected,
+		"badVotes":{},
+		"goodVotes":{}
+	}
+	Globals.gauntletData["submissions"][url] = submissionData
+	$Submit.visible = false
+	currentActivitySelected = -1
+	
 func loadGauntlet():
 	Globals.loadGauntletData()
 	
@@ -64,9 +94,12 @@ func loadGauntlet():
 func sortByKey(a,b):
 	return (a[1] > b[1])
 
+<<<<<<< HEAD
 func showPopup():
 	$Submit.visible = true
 
 func hidePopup():
 	$Submit.visible = false
+=======
+>>>>>>> d36a9865008e847521cc5a424c5e29072f8f3788
 	
