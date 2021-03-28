@@ -39,6 +39,10 @@ func displayMenu():
 	
 func displayProfile():
 	Globals.lastPage = filename
+	var db = Firebase.Database.get_database_reference(Globals.usersPath + "/" + Globals.userID)
+	db.read()
+	var text = yield(db,"read_successful")
+	Globals.userData = parse_json(text)
 	get_tree().change_scene("res://ProfilePage.tscn")
 	
 func displayTitle():
