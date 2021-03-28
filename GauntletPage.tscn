@@ -579,7 +579,6 @@ __meta__ = {
 }
 
 [node name="Submit" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -602,18 +601,18 @@ __meta__ = {
 
 [node name="SubmitContainer" type="Panel" parent="Submit/EscapePanel"]
 anchor_left = 0.1
-anchor_top = 0.2
+anchor_top = 0.4
 anchor_right = 0.9
-anchor_bottom = 0.8
+anchor_bottom = 0.6
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Event" type="OptionButton" parent="Submit/EscapePanel/SubmitContainer"]
 anchor_left = 0.1
-anchor_top = 0.8
+anchor_top = 0.6
 anchor_right = 0.9
-anchor_bottom = 0.9
+anchor_bottom = 0.8
 focus_mode = 0
 custom_styles/hover = SubResource( 5 )
 custom_styles/pressed = SubResource( 5 )
@@ -628,27 +627,6 @@ custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 enabled_focus_mode = 0
 text = "Select An Event"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FileDialog" type="FileDialog" parent="Submit/EscapePanel/SubmitContainer"]
-visible = true
-anchor_left = 0.1
-anchor_top = 0.2
-anchor_right = 0.9
-anchor_bottom = 0.6
-margin_left = 1.26129
-margin_right = 0.42041
-theme = ExtResource( 1 )
-popup_exclusive = true
-window_title = "Open a File"
-dialog_text = "Choose your submission"
-mode = 0
-access = 2
-filters = PoolStringArray( "*.png", "*.jpg", "*.jpeg" )
-current_dir = "/CORWIN-FILES/Documents/Godot/LAHACKS21/LAHacks2021"
-current_path = "/CORWIN-FILES/Documents/Godot/LAHACKS21/LAHacks2021/"
 __meta__ = {
 "_edit_use_anchors_": false
 }
