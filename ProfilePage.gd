@@ -7,6 +7,11 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	var db = Firebase.Database.get_database_reference(Globals.usersPath + "/" + Globals.userID)
+	db.read()
+	var text = yield(db,"read_successful")
+	Globals.userData = parse_json(text)
 	#signal connections
 	$"ProfilePicture/Change-icon-button".connect("pressed", self, "showIcons")
 	$"ProfileInfo/Username-edit".connect("text_entered", self, "changeName")
@@ -23,7 +28,8 @@ func _ready():
 	$"ProfilePicture/Icon-image".texture = load("res://Icons/Sprites/" + String(Globals.userData["icon"]) + ".jpg")
 	$"ProfileInfo/Username-edit".text = Globals.userData["name"]
 	$"ProfileInfo/Bio-edit".text = Globals.userData["bio"]
-	$"ProfileInfo/Account-age-data".text = String(Globals.userData["created"])
+	var datetime = OS.get_datetime_from_unix_time(Globals.userData["created"])
+	$"ProfileInfo/Account-age-data".text = datetime["month"] + "/" + datetime["day"] + "/" + datetime["year"]
 	$"ProfileInfo/Gauntlet-wins-data".text = String(Globals.userData["wins"])
 	
 	

@@ -8,6 +8,8 @@ var lastPage = "res://Base.tscn"
 var userID = ""
 var currentGauntlet = "anb31sa"
 
+var gauntlets = {}
+
 var gauntletData = {
 	"id":currentGauntlet,
 	"name":"some name",

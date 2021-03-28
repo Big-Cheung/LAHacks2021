@@ -1,6 +1,7 @@
 extends Control
 
 
+var new_user = false
 
 func _ready():
 	$Signin/Signup.connect("pressed",self,"signup")
@@ -14,6 +15,7 @@ func _ready():
 func signup():
 	$Signin/Error.visible = false
 	Firebase.Auth.signup_with_email_and_password($Signin/EmailHolder/Email.text, $Signin/PassHolder/Password.text)
+	new_user = true
 
 func signin():
 	$Signin/Error.visible = false
@@ -30,7 +32,8 @@ func loginFailed(code, msg):
 	
 func setUserData(data):
 	Globals.userData.id = Globals.userID
-	Globals.userData.name = data["display_name"]
 	Globals.userData.created = data.created_at
+	if (new_user):
+		Globals.saveUserToFirebase()
 	
 	get_tree().change_scene("res://MainPage.tscn")
