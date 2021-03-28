@@ -203,6 +203,7 @@ anchor_top = 0.2
 anchor_right = 0.92
 anchor_bottom = 0.45
 custom_styles/bg = SubResource( 2 )
+custom_fonts/font = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -240,6 +241,7 @@ __meta__ = {
 }
 
 [node name="Join Popup" type="Button" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_styles/hover = SubResource( 4 )
@@ -257,7 +259,7 @@ anchor_top = 0.362
 anchor_right = 0.641
 anchor_bottom = 0.415
 custom_fonts/font = ExtResource( 4 )
-text = "Enter Code"
+placeholder_text = "Enter Code"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -274,13 +276,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="check-mark" type="Sprite" parent="Join Popup"]
+[node name="check-mark" type="Sprite" parent="Join Popup/Confirm Edit"]
 modulate = Color( 1, 1, 1, 0.560784 )
-position = Vector2( 618, 705 )
-scale = Vector2( 0.095, 0.15 )
+position = Vector2( 36.7496, 50.4537 )
+scale = Vector2( 0.0949999, 0.173912 )
 texture = ExtResource( 11 )
 
 [node name="Join-error-msg" type="RichTextLabel" parent="Join Popup"]
+visible = false
 anchor_left = 0.282
 anchor_top = 0.428
 anchor_right = 0.724
@@ -297,7 +300,6 @@ __meta__ = {
 }
 
 [node name="Settings Popup" type="Container" parent="."]
-visible = false
 anchor_left = 0.025
 anchor_top = 0.106
 anchor_right = 0.5
@@ -342,9 +344,9 @@ custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Logout   "
 
-[node name="logout" type="Sprite" parent="Settings Popup"]
-position = Vector2( 326.172, 250.977 )
-scale = Vector2( 0.117362, 0.117362 )
+[node name="logout" type="Sprite" parent="Settings Popup/LogoutButton"]
+position = Vector2( 381.408, 85.935 )
+scale = Vector2( 0.0964818, 0.117362 )
 texture = ExtResource( 3 )
 
 [node name="close-popup-back" type="Panel" parent="Settings Popup"]
@@ -361,8 +363,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="x-button" type="Sprite" parent="Settings Popup"]
-position = Vector2( 67, -66.733 )
+[node name="x-button" type="Sprite" parent="Settings Popup/close-popup-back"]
+position = Vector2( 66.92, 70.067 )
 scale = Vector2( 0.605, 0.605 )
 texture = ExtResource( 5 )
 

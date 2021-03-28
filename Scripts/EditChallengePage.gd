@@ -42,7 +42,7 @@ func _ready():
 func createEvent():
 	$"Container/EventList".add_item("Blank Event")
 	$"Container/EventList".select($"Container/EventList".get_item_count() - 1)
-	Globals.gauntletData.eventData[String($"Container/EventList".get_item_count() - 1)] = {
+	Globals.gauntletData.eventData[$"Container/EventList".get_item_count()-1] = {
 		"name":"Blank Event",
 		"start":5,
 		"growth":5,
@@ -65,7 +65,7 @@ func deleteEvent():
 	checkForEmpty()
 
 func showMenu(index):
-	selected = String(index)
+	selected = index
 	$"Container/EventMenu/EventName".text = $"Container/EventList".get_item_text(index)
 	$"Container/EventMenu/Start/Num".value = Globals.gauntletData.eventData[selected]["start"]
 	$"Container/EventMenu/Growth/Num".value = Globals.gauntletData.eventData[selected]["growth"]
@@ -149,9 +149,14 @@ func saveGauntlet():
 	print(code)
 	var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + code)
 	dbREF.put(Globals.gauntletData)
+	if not Globals.userData.has("gauntlets"):
+		Globals.userData.gauntlets = {}
 	Globals.userData.gauntlets[code] = 0
+	Globals.gauntlets[code] = Globals.gauntletData
+	Globals.saveUserToFirebase()
 	
 	#Change back to the previous scene
+	#yield(Globals.loadUserGauntletData(),"completed")
 	Globals.goBack()
 
 func checkForEmpty():

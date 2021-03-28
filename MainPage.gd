@@ -21,6 +21,8 @@ func _ready():
 	$"Join Popup".visible = false
 	$"Settings Popup".visible = false
 	
+	$"Active-gauntlets".connect("item_activated",self,"displayGauntlet")
+	
 	for item in Globals.gauntlets.keys():
 		$"Active-gauntlets".add_item(Globals.gauntlets[item].name)
 		$"Active-gauntlets".set_item_metadata($"Active-gauntlets".get_item_count()-1,item)
@@ -33,8 +35,27 @@ func hideJoinPopup():
 	$"Join Popup".visible = false
 	
 func attemptJoin():
-	var db = Firebase.Database.get_database_reference(Globals.usersPath + "/" + Globals.userID)
-	$"Join Popup".text
+	var db = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + $"Join Popup/Enter Code".text)
+	db.read()
+	var text = yield(db,"read_successful")
+	if (text == "null") :
+		$"Join Popup/Join-error-msg".visible = true
+		return
+
+	db.update("playerData/"+Globals.userID,
+	{
+		"name":Globals.userData.name,
+		"score":0
+	})
+	
+	Globals.gauntlets[$"Join Popup/Enter Code".text] = parse_json(text)
+	$"Active-gauntlets".add_item(Globals.gauntlets[$"Join Popup/Enter Code".text].name)
+	$"Active-gauntlets".set_item_metadata($"Active-gauntlets".get_item_count()-1,$"Join Popup/Enter Code".text)
+	
+	if not Globals.userData.has("gauntlets"):
+		Globals.userData.gauntlets = {}
+	Globals.userData.gauntlets[$"Join Popup/Enter Code".text] = 0
+	Globals.saveUserToFirebase()
 	$"Join Popup".visible = false
 	
 func displayMenu():
@@ -50,9 +71,15 @@ func displayProfile():
 func displayTitle():
 	Firebase.Auth.logout()
 	Globals.userData = Globals.defaultUserData
+	Globals.gauntlets = {}
 	get_tree().change_scene("res://TitlePage.tscn")
 	
 func displayCreateGauntlet():
 	Globals.lastPage = filename
 	get_tree().change_scene("res://EditChallengePage.tscn")
-	
+
+func displayGauntlet(index):
+	Globals.lastPage = filename
+	Globals.currentGauntlet = $"Active-gauntlets".get_item_metadata(index)
+	yield(Globals.loadGauntlet(),"completed")
+	get_tree().change_scene("res://GauntletPage.tscn")
