@@ -94,12 +94,5 @@ func loadGauntlet():
 func sortByKey(a,b):
 	return (a[1] > b[1])
 
-<<<<<<< HEAD
-func showPopup():
-	$Submit.visible = true
 
-func hidePopup():
-	$Submit.visible = false
-=======
->>>>>>> d36a9865008e847521cc5a424c5e29072f8f3788
 	
