@@ -29,7 +29,7 @@ func _ready():
 	$"ProfileInfo/Username-edit".text = Globals.userData["name"]
 	$"ProfileInfo/Bio-edit".text = Globals.userData["bio"]
 	var datetime = OS.get_datetime_from_unix_time(Globals.userData["created"])
-	$"ProfileInfo/Account-age-data".text = datetime["month"] + "/" + datetime["day"] + "/" + datetime["year"]
+	$"ProfileInfo/Account-age-data".text = String(datetime["month"]) + "/" + String(datetime["day"]) + "/" + String(datetime["year"])
 	$"ProfileInfo/Gauntlet-wins-data".text = String(Globals.userData["wins"])
 	
 	
