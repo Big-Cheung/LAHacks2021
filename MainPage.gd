@@ -47,6 +47,7 @@ func displayProfile():
 	
 func displayTitle():
 	Firebase.Auth.logout()
+	Globals.userData = Globals.defaultUserData
 	get_tree().change_scene("res://TitlePage.tscn")
 	
 func displayCreateGauntlet():

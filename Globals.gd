@@ -6,7 +6,7 @@ var usersPath = "_root/users"
 var lastPage = "res://Base.tscn"
 
 var userID = ""
-var currentGauntlet = "anb31sa"
+var currentGauntlet = ""
 
 var gauntlets = {}
 
@@ -24,6 +24,16 @@ var playerDataPoint = {
 	"score":0
 }
 var userData = {
+	"id":"",
+	"name":"username",
+	"icon":0,
+	"bio":"hello world",
+	"created":"",
+	"wins":0,
+	"gauntlets":{}
+}
+
+var defaultUserData = {
 	"id":"",
 	"name":"username",
 	"icon":0,
