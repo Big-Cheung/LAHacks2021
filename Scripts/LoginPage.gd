@@ -30,7 +30,7 @@ func loginFailed(code, msg):
 	
 func setUserData(data):
 	Globals.userData.id = Globals.userID
-	Globals.userData.name = data["display name"]
+	Globals.userData.name = data["display_name"]
 	Globals.userData.created = data.created_at
 	
 	get_tree().change_scene("res://MainPage.tscn")

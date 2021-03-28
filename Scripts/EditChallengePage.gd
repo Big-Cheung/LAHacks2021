@@ -3,10 +3,6 @@ var selected = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	#Load data
-	loadGauntlet()
-	
 	#Connect Buttons to their respective functions
 	$"Container/NewEvent".connect("pressed", self, "createEvent")
 	$"Container/DeleteEvent".connect("pressed", self, "deleteEvent")
@@ -45,7 +41,7 @@ func _ready():
 func createEvent():
 	$"Container/EventList".add_item("Blank Event")
 	$"Container/EventList".select($"Container/EventList".get_item_count() - 1)
-	Globals.gauntletData.eventData.push_back({
+	Globals.gauntletData.eventData[String($"Container/EventList".get_item_count() - 1)] = {
 		"name":"Blank Event",
 		"start":5,
 		"growth":5,
@@ -55,25 +51,25 @@ func createEvent():
 		"completed":0,
 		"pre":"",
 		"suf":""
-		})
+		}
 	$"Container/EventList".emit_signal("item_selected", $"Container/EventList".get_item_count() - 1)
 	updatePreview()
 	checkForEmpty()
 	
 func deleteEvent():
-	Globals.gauntletData.eventData.remove($"Container/EventList".get_selected_items()[0])
+	Globals.gauntletData.eventData.erase($"Container/EventList".get_selected_items()[0])
 	$"Container/EventList".remove_item($"Container/EventList".get_selected_items()[0])
 	$"Container/EventList".unselect_all()
 	$"Container/EventList".emit_signal("nothing_selected")
 	checkForEmpty()
 
 func showMenu(index):
-	selected = index
+	selected = String(index)
 	$"Container/EventMenu/EventName".text = $"Container/EventList".get_item_text(index)
-	$"Container/EventMenu/Start/Num".value = Globals.gauntletData.eventData[index]["start"]
-	$"Container/EventMenu/Growth/Num".value = Globals.gauntletData.eventData[index]["growth"]
-	$"Container/EventMenu/Points/Num".value = Globals.gauntletData.eventData[index]["points"]
-	$"Container/EventMenu/Rounds/Num".value = Globals.gauntletData.eventData[index]["rounds"]
+	$"Container/EventMenu/Start/Num".value = Globals.gauntletData.eventData[selected]["start"]
+	$"Container/EventMenu/Growth/Num".value = Globals.gauntletData.eventData[selected]["growth"]
+	$"Container/EventMenu/Points/Num".value = Globals.gauntletData.eventData[selected]["points"]
+	$"Container/EventMenu/Rounds/Num".value = Globals.gauntletData.eventData[selected]["rounds"]
 	$"Container/EventMenu".visible = true
 	$"Container/DeleteEvent".visible = true
 
@@ -87,7 +83,7 @@ func changeGauntletName(text):
 	Globals.gauntletData.name = text
 
 func changeText(text):
-	$"Container/EventList".set_item_text(selected,text)
+	$"Container/EventList".set_item_text(int(selected),text)
 	Globals.gauntletData.eventData[selected]["name"] = text
 
 func startValueChanged(newVal):
@@ -130,42 +126,28 @@ func saveGauntlet():
 				code += char(65+letter)
 			else:
 				code += char(97+letter-26)
-		var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + code)
+		var dbREF = Firebase.Database.get_database_reference("_root/gauntlets/" + code)
 		if (dbREF.get_data() == {}):
 			invalidCode = false
 	Globals.currentGauntlet = code
 	Globals.gauntletData["id"] = code
+	Globals.gauntletData["owner"] = Globals.userID
+	Globals.gauntletData["playerData"][Globals.userID] = {
+		"name":Globals.userData.name,
+		"score":0
+	}
 	
-	#Read the data
-	var save_data = File.new()
-	var exists = save_data.file_exists(Globals.gauntletsPath)
-	save_data.open(Globals.gauntletsPath, File.READ)
-	var Gauntlets = {}
-	if (exists):
-		Gauntlets = parse_json(save_data.get_as_text())
-	save_data.close()
-	
-	#Write the data
-	save_data.open(Globals.gauntletsPath, File.WRITE)
-	Gauntlets[String(Globals.currentGauntlet)] = Globals.gauntletData
-	save_data.store_string(to_json(Gauntlets))
-	save_data.close()
+	#Push all data to firebase
+	var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + code)
+	dbREF.push(Globals.gauntletData)
+	Globals.userData.gauntlets[code] = 0
 	
 	#Change back to the previous scene
 	Globals.goBack()
 
-func loadGauntlet():
-	Globals.loadGauntletData()
-	
-	#Change on-screen text boxes
-	$Container/EventList.clear()
-	for item in Globals.gauntletData.eventData:
-		$Container/EventList.add_item(item.name)
-	
-	$Container/Name.text = Globals.gauntletData.name
-
 func checkForEmpty():
 	$Container/Save.disabled = ($Container/EventList.get_item_count() < 1)
+	$Container/Save.disabled = ($Container/Save.disabled) or ($Container/Name.text == "")
 
 func updatePreview():
 	$Container/EventMenu/Preview/Preview.text = Globals.gauntletData.eventData[selected]["pre"] + " " + String(Globals.gauntletData.eventData[selected].start) + " " + Globals.gauntletData.eventData[selected]["suf"]

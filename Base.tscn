@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Style/Fonts/DefaultFont64pt.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Base.gd" type="Script" id=2]
 
 [node name="Base" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -16,3 +18,8 @@ custom_fonts/font = ExtResource( 1 )
 text = "This is some text to be honest"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]

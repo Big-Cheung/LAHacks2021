@@ -1,7 +1,8 @@
 extends Node
 
-var gauntletsPath = "user://Gauntlets.json"
-var usersPath = "user://Players.json"
+
+var gauntletsPath = "_root/gauntlets"
+var usersPath = "_root/users"
 var lastPage = "res://Base.tscn"
 
 var userID = ""
@@ -12,8 +13,8 @@ var gauntletData = {
 	"name":"some name",
 	"owner":userID,
 	"playerData":{},
-	"eventData":[],
-	"submissions":[]
+	"eventData":{},
+	"submissions":{}
 }
 
 var playerDataPoint = {
@@ -27,7 +28,7 @@ var userData = {
 	"bio":"hello world",
 	"created":"",
 	"wins":0,
-	"gauntlets":[]
+	"gauntlets":{}
 }
 
 
