@@ -47,6 +47,8 @@ func loadGauntlet():
 		if (item == 4):
 			$Container/Leaderboard/VSeparator.visible = true
 	
+	$Submit/EscapePanel/SubmitContainer/Event.add_item("word")
+	$Submit/EscapePanel/SubmitContainer/Event.add_item("event.names")
 	$Container/Name.text = Globals.gauntletData.name
 	for event in Globals.gauntletData.eventData:
 		$Container/Events/Empty.visible = false
@@ -64,9 +66,7 @@ func sortByKey(a,b):
 
 func showPopup():
 	$Submit.visible = true
-	$Submit/EscapePanel/SubmitContainer/FileDialog.popup()
 
 func hidePopup():
 	$Submit.visible = false
-	$Submit/EscapePanel/SubmitContainer/FileDialog.hide()
 	

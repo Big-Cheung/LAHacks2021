@@ -38,35 +38,26 @@ func goBack():
 	get_tree().change_scene(String(lastPage))
 
 func saveUserToFirebase():
-	var dbREF = Firebase.Database.get_database_reference(Globals.usersPath + "/" + Globals.userID)
+	var dbREF = Firebase.Database.get_database_reference(usersPath + "/" + userID)
 	dbREF.put(userData)
-
-func loadGauntletData():
-	var load_data = File.new()
-	if not (load_data.file_exists(Globals.gauntletsPath)):
-		return false
-		
-	load_data.open(Globals.gauntletsPath, File.READ)
-	var Gauntlets = parse_json(load_data.get_as_text())
-	if not (Gauntlets.has(String(Globals.currentGauntlet))):
-		load_data.close()
-		return false
-		
-	Globals.gauntletData = Gauntlets[String(Globals.currentGauntlet)]
-	load_data.close()
-	return true
-
-func saveGauntletsToFirebase():
-	var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + Globals.currentGauntlet)
-	if (dbREF.get_data() == {}):
-		dbREF.push(Globals.gauntletData)
-		return
-	dbREF.update(Globals.gauntletData)
 	
-func loadGauntletsFromFirebase():
-	var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + Globals.currentGauntlet)
-	var dict = dbREF.get_data()
-	Globals.gauntletData = dict
+func loadUserFromFirebase():
+	var db = Firebase.Database.get_database_reference(usersPath + "/" + userID)
+	db.read()
+	var text = yield(db,"read_successful")
+	Globals.userData = parse_json(text)
+
+func loadUserGauntletData():
+	loadUserFromFirebase()
+	for key in userData.gauntlets.keys():
+		var db = Firebase.Database.get_database_reference(gauntletsPath + "/" + key)
+		db.read()
+		var gauntlet = yield(db,"read_successful")
+		gauntlets[key] = parse_json(gauntlet)
+
+func saveGauntletToFirebase():
+	var dbREF = Firebase.Database.get_database_reference(gauntletsPath + "/" + currentGauntlet)
+	dbREF.put(Globals.gauntletData)
 
 func _ready():
 	pass

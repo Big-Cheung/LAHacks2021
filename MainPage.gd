@@ -21,6 +21,10 @@ func _ready():
 	$"Join Popup".visible = false
 	$"Settings Popup".visible = false
 	
+	for item in Globals.gauntlets.keys():
+		$"Active-gauntlets".add_item(Globals.gauntlets[item].name)
+		$"Active-gauntlets".set_item_metadata($"Active-gauntlets".get_item_count()-1,item)
+	
 func showJoinPopup():
 	$"Join Popup".visible = true
 	$"Join Popup/Join-error-msg".visible = false
@@ -29,6 +33,8 @@ func hideJoinPopup():
 	$"Join Popup".visible = false
 	
 func attemptJoin():
+	var db = Firebase.Database.get_database_reference(Globals.usersPath + "/" + Globals.userID)
+	$"Join Popup".text
 	$"Join Popup".visible = false
 	
 func displayMenu():
@@ -39,10 +45,6 @@ func displayMenu():
 	
 func displayProfile():
 	Globals.lastPage = filename
-	var db = Firebase.Database.get_database_reference(Globals.usersPath + "/" + Globals.userID)
-	db.read()
-	var text = yield(db,"read_successful")
-	Globals.userData = parse_json(text)
 	get_tree().change_scene("res://ProfilePage.tscn")
 	
 func displayTitle():

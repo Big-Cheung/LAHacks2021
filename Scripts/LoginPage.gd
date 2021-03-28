@@ -35,5 +35,6 @@ func setUserData(data):
 	Globals.userData.created = data.created_at
 	if (new_user):
 		Globals.saveUserToFirebase()
-	
+	else:
+		Globals.loadUserGauntletData()
 	get_tree().change_scene("res://MainPage.tscn")
