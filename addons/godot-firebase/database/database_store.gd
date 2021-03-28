@@ -11,7 +11,7 @@ const _ROOT : String = "_root"
 
 ## @default false
 ## Whether the store is in debug mode.
-var debug : bool = true
+var debug : bool = false
 var _data : Dictionary = { }
 
 

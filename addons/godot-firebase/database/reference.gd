@@ -12,7 +12,7 @@ signal patch_data_update(data)
 signal push_successful()
 signal push_failed()
 
-signal read_successful(result, response_code, headers, body)
+signal read_successful(data)
 signal read_failed()
 
 const ORDER_BY : String = "orderBy"
@@ -120,20 +120,21 @@ func push(data : Dictionary) -> void:
 	else:
 		_push_queue.append(data)
 
-func read(path : String) -> void:
-	path = path.strip_edges(true, true)
+func put(data : Dictionary) -> void:
+	var to_push = JSON.print(data)
+	if _pusher.get_http_client_status() == HTTPClient.STATUS_DISCONNECTED:
+		_pusher.request(_get_list_url() + _db_path + _get_remaining_path(), _headers, true, HTTPClient.METHOD_PUT, to_push)
+	else:
+		_push_queue.append(data)
 
-	if path == _separator:
-		path = ""
-	
+func read() -> void:
 	var resolved_path = (_get_list_url() + _db_path + _get_remaining_path(false))
-	print(resolved_path)
 	_reader.request(resolved_path, _headers, true, HTTPClient.METHOD_GET)
 	
 
 func on_read_data(result : int, response_code : int, headers : PoolStringArray, body : PoolByteArray) -> void:
 	if response_code == HTTPClient.RESPONSE_OK:
-		emit_signal("read_successful", result, response_code, headers, body)
+		emit_signal("read_successful", body.get_string_from_utf8())
 	else:
 		emit_signal("read_failed")
 		

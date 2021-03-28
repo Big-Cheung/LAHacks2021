@@ -2,6 +2,7 @@ extends Control
 var selected = -1
 
 # Called when the node enters the scene tree for the first time.
+
 func _ready():
 	#Connect Buttons to their respective functions
 	$"Container/NewEvent".connect("pressed", self, "createEvent")
@@ -81,6 +82,7 @@ func hideMenu():
 
 func changeGauntletName(text):
 	Globals.gauntletData.name = text
+	checkForEmpty()
 
 func changeText(text):
 	$"Container/EventList".set_item_text(int(selected),text)
@@ -116,18 +118,24 @@ func suffixChanged(text):
 	
 func saveGauntlet():
 	#generate gauntlet code
+	
 	var rng = RandomNumberGenerator.new()
+	rng.seed = OS.get_unix_time()
 	var code = ""
 	var invalidCode = true
 	while invalidCode:
+		code = ""
 		for i in range (0, 6):
 			var letter = rng.randi_range(0, 51)
 			if letter < 26:
 				code += char(65+letter)
 			else:
 				code += char(97+letter-26)
-		var dbREF = Firebase.Database.get_database_reference("_root/gauntlets/" + code)
-		if (dbREF.get_data() == {}):
+		var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + code)
+		dbREF.read()
+		var data = yield(dbREF,"read_successful")
+		print(data)
+		if (data == "null"):
 			invalidCode = false
 	Globals.currentGauntlet = code
 	Globals.gauntletData["id"] = code
@@ -138,8 +146,9 @@ func saveGauntlet():
 	}
 	
 	#Push all data to firebase
+	print(code)
 	var dbREF = Firebase.Database.get_database_reference(Globals.gauntletsPath + "/" + code)
-	dbREF.push(Globals.gauntletData)
+	dbREF.put(Globals.gauntletData)
 	Globals.userData.gauntlets[code] = 0
 	
 	#Change back to the previous scene
