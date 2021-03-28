@@ -1,15 +1,36 @@
 extends Control
 
-
+var currentFeedSelected
 
 func _ready():
 	loadGauntlet()
 	
 	$Container/Submit.connect("pressed",self,"showPopup")
 	$Submit/EscapePanel.connect("pressed",self,"hidePopup")
+	$"Container/Feed/Good-button".connect("pressed",self,"upVote")
+	$"Container/Feed/Bad-button".connect("pressed",self,"upVote")
+	$Container/Feed/List.connect("item_selected", self, "voteFeed")
+	
 	$Submit.visible = false
+	$"Container/Feed/Good-button".visible = false
+	$"Container/Feed/Bad-button".visible = false
 	$"Container/JoinCode/Join-code-info".text = String(Globals.gauntletData["id"])
 
+func voteFeed(index):
+	currentFeedSelected = index
+	$"Container/Feed/Good-button".visible = true
+	$"Container/Feed/Bad-button".visible = true
+	
+func upVote():
+	$Container/Feed/List.remove_item(currentFeedSelected)
+	$"Container/Feed/Good-button".visible = false
+	$"Container/Feed/Bad-button".visible = false
+	
+	
+func downVote():
+	$Container/Feed/List.remove_item(currentFeedSelected)
+	$"Container/Feed/Good-button".visible = false
+	$"Container/Feed/Bad-button".visible = false
 
 func loadGauntlet():
 	Globals.loadGauntletData()
